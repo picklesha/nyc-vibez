@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NY Vibes - המדריך הכשר הניו-יורקי שלך</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            color: #ffffff;
+            text-align: center;
+            background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), 
+                        url('https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?q=80&w=1920&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 100vh;
+        }
+        header {
+            margin-bottom: 25px;
+        }
+        h1 {
+            color: #f39c12;
+            font-size: 2.8em;
+            margin-bottom: 5px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+        }
+        .kosher-badge {
+            background-color: #007bff;
+            color: #fff;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.9em;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 5px;
+        }
+        .search-box {
+            max-width: 600px;
+            margin: 0 auto 25px auto;
+            background: rgba(30, 30, 30, 0.85);
+            padding: 15px;
+            border-radius: 12px;
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            backdrop-filter: blur(5px);
+        }
+        .search-box input {
+            padding: 12px;
+            font-size: 15px;
+            border-radius: 8px;
+            border: 1px solid #444;
+            background: #121212;
+            color: #fff;
+            width: 70%;
+        }
+        .search-box button {
+            background-color: #f39c12;
+            color: #000;
+            border: none;
+            padding: 12px 20px;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .vibe-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 25px;
+        }
+        .vibe-btn {
+            background-color: #1fe064;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            font-size: 15px;
+            font-weight: bold;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .vibe-btn:hover {
+            transform: scale(1.05);
+            background-color: #17b950;
+        }
+
+        .container {
+            max-width: 750px;
+            margin: 0 auto;
+            background: rgba(30, 30, 30, 0.9);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.7);
+            backdrop-filter: blur(8px);
+        }
+        
+        .music-section {
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+        }
+        .song-list {
+            list-style: none;
+            padding: 0;
+            text-align: right;
+        }
+        .song-item {
+            background: #2a2a2a;
+            margin: 8px 0;
+            padding: 12px 15px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .genre-badge {
+            background-color: #333;
+            color: #1fe064;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.85em;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>🗽 NYC VIBES</h1>
+        <p>מסלולים, פלייליסט מודרני והמלצות **כשרות בלבד** בניו יורק</p>
+        <span class="kosher-badge">✡️ 100% מקומות כשרים</span>
+    </header>
+
+    <div class="search-box">
+        <input type="text" id="user-location" placeholder="איפה אתה? (למשל: Times Square, SoHo, Central Park)">
+        <button onclick="searchByLocation()">חפש בסביבה</button>
+    </div>
+
+    <div class="vibe-buttons">
+        <button class="vibe-btn" onclick="selectVibe('morning')">☕ בוקר בסוהו</button>
+        <button class="vibe-btn" onclick="selectVibe('museum')">🎨 פארק ותרבות</button>
+        <button class="vibe-btn" onclick="selectVibe('hipster')">📸 ברוקלין & וינטג'</button>
+        <button class="vibe-btn" onclick="selectVibe('night')">🍸 לילה אורבני</button>
+    </div>
+
+    <div class="container">
+        <h2 id="vibe-title">איפה אתה בניו יורק?</h2>
+        <p id="vibe-description">הכנס מיקום למעלה או בחר וויב כדי לקבל המלצות ומסלול כשר!</p>
+
+        <div class="music-section">
+            <h3>🎧 פלייליסט מודרני לדרך</h3>
+            <div class="song-list" id="song-list">
+                <div class="song-item">השירים המודרניים יופיעו כאן לפי הבחירה שלך...</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function searchByLocation() {
+            const input = document.getElementById('user-location').value.trim().toLowerCase();
+            const title = document.getElementById('vibe-title');
+            const desc = document.getElementById('vibe-description');
+            const songList = document.getElementById('song-list');
+
+            if (!input) {
+                alert("אנא הכנס מיקום (למשל: SoHo, Times Square, Brooklyn)");
+                return;
+            }
+
+            if (input.includes("times square") || input.includes("טיימס סקוור") || input.includes("midtown")) {
+                title.innerText = "📍 המלצות כשרות ב-Times Square & Midtown";
+                desc.innerText = "תצפית Top of the Rock, ואז ארוחה כשרה: פיצה כשרה מעולה ב-Bravo Kosher Pizza או בשר כשר ב-Mr. Broadway!";
+                songList.innerHTML = `
+                    <div class="song-item"><span>Jack Harlow - Whats Poppin</span> <span class="genre-badge">היפ הופ מודרני 👟</span></div>
+                    <div class="song-item"><span>Drake - First Person Shooter</span> <span class="genre-badge">היפ הופ / ראפ 🎤</span></div>
+                `;
+            } else if (input.includes("soho") || input.includes("סוהו")) {
+                selectVibe('morning');
+            } else if (input.includes("brooklyn") || input.includes("ברוקלין") || input.includes("williamsburg")) {
+                selectVibe('hipster');
+            } else {
+                title.innerText = `📍 המלצות לאזור ${input}`;
+                desc.innerText = `מצאנו מקומות כשרים מעולים במיקום שלך! מומלץ להתחיל עם קפה ומאפה כשר בקרבת מקום ולטייל ברחובות הראשיים.`;
+                songList.innerHTML = `
+                    <div class="song-item"><span>Travis Scott - FE!N</span> <span class="genre-badge">טראפ מודרני 🎧</span></div>
+                    <div class="song-item"><span>Post Malone - Chemical</span> <span class="genre-badge">פופ מודרני 🎸</span></div>
+                `;
+            }
+        }
+
+        function selectVibe(type) {
+            const title = document.getElementById('vibe-title');
+            const desc = document.getElementById('vibe-description');
+            const songList = document.getElementById('song-list');
+
+            if (type === 'morning') {
+                title.innerText = "☕ בוקר כשר בסוהו";
+                desc.innerText = "קפה ומאפה כשר ב-Breads Bakery, סיבוב שופינג ברחוב Broadway והליכה על פארק ההיי-ליין (High Line).";
+                songList.innerHTML = `
+                    <div class="song-item"><span>SZA - Snooze</span> <span class="genre-badge">R&B מודרני ☀️</span></div>
+                    <div class="song-item"><span>Dua Lipa - Houdini</span> <span class="genre-badge">פופ עדכני ☕</span></div>
+                    <div class="song-item"><span>The Weeknd - Blinding Lights</span> <span class="genre-badge">פופ אורבני 🗽</span></div>
+                `;
+            } else if (type === 'night') {
+                title.innerText = "🍸 לילה אורבני כשר";
+                desc.innerText = "מסעדת בשרים כשרה ויוקרתית בערב (כמו Reserve Cut או Wall Street Grill), ואחריה טיול באורות הלילה של מנהטן.";
+                songList.innerHTML = `
+                    <div class="song-item"><span>Drake ft. 21 Savage - Rich Flex</span> <span class="genre-badge">היפ הופ מודרני 🏙️</span></div>
+                    <div class="song-item"><span>Travis Scott - SICKO MODE</span> <span class="genre-badge">טראפ קצבי 👟</span></div>
+                    <div class="song-item"><span>Jay-Z ft. Alicia Keys - Empire State of Mind</span> <span class="genre-badge">ההמנון של ניו יורק 🌃</span></div>
+                `;
+            } else if (type === 'hipster') {
+                title.innerText = "📸 ברוקלין & וינטג' כשר";
+                desc.innerText = "חנויות יד שנייה בוויליאמסבורג, תצפית מדהימה מפארק דאמבו (DUMBO), וארוחת המבורגר כשר ב-Brooklyn Kosher Grill.";
+                songList.innerHTML = `
+                    <div class="song-item"><span>Post Malone - Sunflower</span> <span class="genre-badge">היפ הופ / פופ 🎧</span></div>
+                    <div class="song-item"><span>Jack Harlow - Lovin On Me</span> <span class="genre-badge">היפ הופ עדכני 👟</span></div>
+                `;
+            } else if (type === 'museum') {
+                title.innerText = "🎨 תרבות וסנטרל פארק (100% כשר)";
+                desc.innerText = "בייגל כשר מטורף ב-Modern Bread and Bagel (ב-Upper West Side), טיול בסנטרל פארק וביקור במוזיאון המוזיקה או הטבע.";
+                songList.innerHTML = `
+                    <div class="song-item"><span>The Weeknd - Save Your Tears</span> <span class="genre-badge">פופ מודרני 🎹</span></div>
+                    <div class="song-item"><span>Olivia Rodrigo - vampire</span> <span class="genre-badge">פופ-רוק עדכני 🎤</span></div>
+                `;
+            }
+        }
+    </script>
+</body>
+</html>
