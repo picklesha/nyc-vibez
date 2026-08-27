@@ -3,236 +3,1000 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NY Vibes - המדריך הכשר הניו-יורקי שלך</title>
+    <title>NYC VIBES - המדריך הכשר והמוזיקלי שלך בניו יורק</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;600;700;900&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary: #f39c12;
+            --primary-glow: rgba(243, 156, 18, 0.4);
+            --accent: #1fe064;
+            --accent-glow: rgba(31, 224, 100, 0.35);
+            --bg-dark: #0f1117;
+            --card-bg: rgba(26, 29, 38, 0.85);
+            --card-border: rgba(255, 255, 255, 0.1);
+            --text-main: #ffffff;
+            --text-muted: #a0a6b5;
+        }
+
         * {
             box-sizing: border-box;
-        }
-        body {
-            font-family: Arial, sans-serif;
             margin: 0;
-            padding: 20px;
-            color: #ffffff;
-            text-align: center;
-            background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), 
+            padding: 0;
+            font-family: 'Heebo', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(rgba(10, 12, 18, 0.82), rgba(10, 12, 18, 0.88)), 
                         url('https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?q=80&w=1920&auto=format&fit=crop');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
+            color: var(--text-main);
             min-height: 100vh;
+            padding: 25px 15px 100px;
         }
+
+        .main-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* Header */
         header {
-            margin-bottom: 25px;
+            text-align: center;
+            margin-bottom: 30px;
+            animation: fadeInDown 0.8s ease-out;
         }
-        h1 {
-            color: #f39c12;
-            font-size: 2.8em;
+
+        .logo-title {
+            font-family: 'Outfit', 'Heebo', sans-serif;
+            font-size: 3.2rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            background: linear-gradient(45deg, #f39c12, #f1c40f, #1fe064);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 4px 20px rgba(243, 156, 18, 0.3);
             margin-bottom: 5px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
         }
-        .kosher-badge {
-            background-color: #007bff;
-            color: #fff;
-            padding: 4px 10px;
-            border-radius: 12px;
-            font-size: 0.9em;
-            font-weight: bold;
-            display: inline-block;
-            margin-top: 5px;
+
+        .subtitle {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            margin-bottom: 12px;
         }
-        .search-box {
-            max-width: 600px;
-            margin: 0 auto 25px auto;
-            background: rgba(30, 30, 30, 0.85);
-            padding: 15px;
-            border-radius: 12px;
+
+        .badge-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .badge-kosher {
+            background: rgba(0, 123, 255, 0.2);
+            color: #4da3ff;
+            border: 1px solid rgba(0, 123, 255, 0.4);
+        }
+
+        .badge-music {
+            background: rgba(31, 224, 100, 0.15);
+            color: #1fe064;
+            border: 1px solid rgba(31, 224, 100, 0.3);
+        }
+
+        /* Search Box */
+        .search-container {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            padding: 16px;
+            border-radius: 18px;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
             display: flex;
             gap: 10px;
-            justify-content: center;
-            backdrop-filter: blur(5px);
+            margin-bottom: 25px;
+            transition: border-color 0.3s, box-shadow 0.3s;
         }
-        .search-box input {
-            padding: 12px;
-            font-size: 15px;
-            border-radius: 8px;
-            border: 1px solid #444;
-            background: #121212;
+
+        .search-container:focus-within {
+            border-color: var(--primary);
+            box-shadow: 0 10px 35px var(--primary-glow);
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 14px 18px;
+            font-size: 1rem;
+            border-radius: 12px;
+            border: 1px solid #33394a;
+            background: #13161f;
             color: #fff;
-            width: 70%;
+            outline: none;
+            transition: 0.3s;
         }
-        .search-box button {
-            background-color: #f39c12;
+
+        .search-input:focus {
+            border-color: var(--primary);
+        }
+
+        .search-btn {
+            background: linear-gradient(135deg, #f39c12, #e67e22);
             color: #000;
             border: none;
-            padding: 12px 20px;
-            font-weight: bold;
-            border-radius: 8px;
+            padding: 12px 24px;
+            font-size: 1rem;
+            font-weight: 700;
+            border-radius: 12px;
             cursor: pointer;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
+        }
+
+        .search-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px var(--primary-glow);
+        }
+
+        /* Vibe Buttons (Pills) */
+        .vibe-wrapper {
+            margin-bottom: 30px;
+        }
+
+        .vibe-label {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+            text-align: center;
         }
 
         .vibe-buttons {
             display: flex;
             justify-content: center;
-            gap: 12px;
+            gap: 10px;
             flex-wrap: wrap;
-            margin-bottom: 25px;
-        }
-        .vibe-btn {
-            background-color: #1fe064;
-            color: #000;
-            border: none;
-            padding: 10px 20px;
-            font-size: 15px;
-            font-weight: bold;
-            border-radius: 25px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-        .vibe-btn:hover {
-            transform: scale(1.05);
-            background-color: #17b950;
         }
 
-        .container {
-            max-width: 750px;
-            margin: 0 auto;
-            background: rgba(30, 30, 30, 0.9);
-            padding: 25px;
-            border-radius: 15px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.7);
-            backdrop-filter: blur(8px);
+        .vibe-btn {
+            background: rgba(30, 35, 48, 0.8);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 10px 18px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            backdrop-filter: blur(6px);
         }
-        
-        .music-section {
-            margin-top: 25px;
-            padding-top: 20px;
-            border-top: 1px solid #444;
+
+        .vibe-btn:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            transform: translateY(-2px);
         }
-        .song-list {
-            list-style: none;
-            padding: 0;
+
+        .vibe-btn.active {
+            background: linear-gradient(135deg, #1fe064, #12a144);
+            color: #000;
+            border-color: transparent;
+            box-shadow: 0 5px 20px var(--accent-glow);
+            font-weight: 700;
+        }
+
+        /* Main Content Container */
+        .content-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            padding: 30px;
+            border-radius: 24px;
+            backdrop-filter: blur(14px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+            margin-bottom: 30px;
+        }
+
+        .section-header {
             text-align: right;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            padding-bottom: 15px;
+            margin-bottom: 25px;
         }
-        .song-item {
-            background: #2a2a2a;
-            margin: 8px 0;
-            padding: 12px 15px;
-            border-radius: 8px;
+
+        .vibe-title {
+            font-size: 1.8rem;
+            color: #f39c12;
+            margin-bottom: 6px;
+        }
+
+        .vibe-desc {
+            font-size: 1.05rem;
+            color: #d1d5db;
+            line-height: 1.6;
+        }
+
+        /* Places Grid */
+        .places-heading {
+            font-size: 1.3rem;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #fff;
+        }
+
+        .places-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 18px;
+            margin-bottom: 35px;
+        }
+
+        .place-card {
+            background: rgba(18, 21, 30, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 16px;
+            padding: 18px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .place-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--primary);
+            opacity: 0.8;
+        }
+
+        .place-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(243, 156, 18, 0.5);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+        }
+
+        .place-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 8px;
+        }
+
+        .place-name {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .place-type {
+            font-size: 0.75rem;
+            padding: 3px 8px;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+
+        .type-meat { background: rgba(231, 76, 60, 0.2); color: #ff6b6b; border: 1px solid rgba(231, 76, 60, 0.4); }
+        .type-dairy { background: rgba(52, 152, 219, 0.2); color: #74b9ff; border: 1px solid rgba(52, 152, 219, 0.4); }
+        .type-bakery { background: rgba(243, 156, 18, 0.2); color: #f39c12; border: 1px solid rgba(243, 156, 18, 0.4); }
+
+        .place-info {
+            font-size: 0.92rem;
+            color: var(--text-muted);
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .place-address {
+            font-size: 0.85rem;
+            color: #8c93a4;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .maps-btn {
+            background: rgba(66, 133, 244, 0.15);
+            color: #4da3ff;
+            border: 1px solid rgba(66, 133, 244, 0.35);
+            padding: 9px 14px;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.25s;
+        }
+
+        .maps-btn:hover {
+            background: #4285f4;
+            color: #ffffff;
+            box-shadow: 0 4px 15px rgba(66, 133, 244, 0.4);
+            transform: scale(1.02);
+        }
+
+        /* Music Playlist Section */
+        .music-section {
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding-top: 25px;
+        }
+
+        .music-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            margin-bottom: 18px;
         }
-        .genre-badge {
-            background-color: #333;
+
+        .music-title {
+            font-size: 1.3rem;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .song-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .song-card {
+            background: rgba(18, 21, 30, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 14px;
+            padding: 12px 18px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: 0.25s ease;
+        }
+
+        .song-card:hover {
+            background: rgba(28, 32, 45, 0.9);
+            border-color: rgba(31, 224, 100, 0.4);
+        }
+
+        .song-card.playing {
+            border-color: var(--accent);
+            background: rgba(31, 224, 100, 0.08);
+        }
+
+        .song-details {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-align: right;
+        }
+
+        .play-btn-circle {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: #1fe064;
+            border: none;
+            color: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            flex-shrink: 0;
+            box-shadow: 0 4px 12px rgba(31, 224, 100, 0.3);
+        }
+
+        .play-btn-circle:hover {
+            transform: scale(1.12);
+            background: #25f570;
+            box-shadow: 0 6px 18px rgba(31, 224, 100, 0.5);
+        }
+
+        .play-btn-circle.playing {
+            background: #ff4757;
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(255, 71, 87, 0.4);
+        }
+
+        .song-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .song-name {
+            font-weight: 700;
+            font-size: 1.05rem;
+            color: #fff;
+        }
+
+        .song-artist {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .song-genre {
+            background: rgba(255, 255, 255, 0.06);
             color: #1fe064;
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 0.85em;
+            padding: 4px 10px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-right: auto;
+        }
+
+        .spotify-link {
+            color: #8c93a4;
+            font-size: 0.85rem;
+            text-decoration: none;
+            margin-right: 12px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            transition: 0.2s;
+        }
+
+        .spotify-link:hover {
+            color: #1fe064;
+        }
+
+        /* Floating Audio Player Bar */
+        .now-playing-bar {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%) translateY(120px);
+            background: rgba(18, 22, 32, 0.95);
+            border: 1px solid rgba(31, 224, 100, 0.5);
+            padding: 12px 25px;
+            border-radius: 35px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8), 0 0 20px rgba(31, 224, 100, 0.2);
+            backdrop-filter: blur(15px);
+            z-index: 1000;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            max-width: 90%;
+        }
+
+        .now-playing-bar.visible {
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .bar-info {
+            text-align: right;
+        }
+
+        .bar-title {
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: #fff;
+        }
+
+        .bar-artist {
+            font-size: 0.8rem;
+            color: var(--accent);
+        }
+
+        .bar-close {
+            background: transparent;
+            border: none;
+            color: #8c93a4;
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: 0.2s;
+        }
+
+        .bar-close:hover {
+            color: #fff;
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 600px) {
+            .logo-title { font-size: 2.4rem; }
+            .search-container { flex-direction: column; }
+            .search-btn { justify-content: center; width: 100%; }
+            .vibe-btn { font-size: 0.85rem; padding: 8px 14px; }
+            .content-card { padding: 20px; }
+            .song-card { flex-wrap: wrap; gap: 10px; }
+            .song-genre { margin-right: 0; }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>🗽 NYC VIBES</h1>
-        <p>מסלולים, פלייליסט מודרני והמלצות **כשרות בלבד** בניו יורק</p>
-        <span class="kosher-badge">✡️ 100% מקומות כשרים</span>
-    </header>
+    <div class="main-wrapper">
+        <!-- Header -->
+        <header>
+            <h1 class="logo-title">🗽 NYC VIBEZ</h1>
+            <p class="subtitle">המדריך הכשר, העדכני והמוזיקלי ביותר לטיול מושלם בניו יורק</p>
+            <div class="badge-container">
+                <span class="badge badge-kosher">✓ 100% מקומות כשרים בלבד</span>
+                <span class="badge badge-music">🎧 פלייליסטים מותאמים לכל וייב</span>
+            </div>
+        </header>
 
-    <div class="search-box">
-        <input type="text" id="user-location" placeholder="איפה אתה? (למשל: Times Square, SoHo, Central Park)">
-        <button onclick="searchByLocation()">חפש בסביבה</button>
-    </div>
+        <!-- Search Box -->
+        <div class="search-container">
+            <input type="text" id="user-location" class="search-input" 
+                   placeholder="איפה אתה נמצא? (למשל: Times Square, SoHo, Brooklyn, Central Park...)" 
+                   onkeypress="handleKeyPress(event)">
+            <button class="search-btn" onclick="searchByLocation()">
+                <span>🔍</span> מצא לי וייב
+            </button>
+        </div>
 
-    <div class="vibe-buttons">
-        <button class="vibe-btn" onclick="selectVibe('morning')">☕ בוקר בסוהו</button>
-        <button class="vibe-btn" onclick="selectVibe('museum')">🎨 פארק ותרבות</button>
-        <button class="vibe-btn" onclick="selectVibe('hipster')">📸 ברוקלין & וינטג'</button>
-        <button class="vibe-btn" onclick="selectVibe('night')">🍸 לילה אורבני</button>
-    </div>
+        <!-- Vibe Pills -->
+        <div class="vibe-wrapper">
+            <div class="vibe-label">או בחר וייב מהיר:</div>
+            <div class="vibe-buttons">
+                <button class="vibe-btn active" id="btn-times-square" onclick="selectVibe('times-square')">✨ טיימס סקוור ומידטאון</button>
+                <button class="vibe-btn" id="btn-morning" onclick="selectVibe('morning')">☕ בוקר בסוהו וצ'לסי</button>
+                <button class="vibe-btn" id="btn-museum" onclick="selectVibe('museum')">🎨 סנטרל פארק & מוזיאונים</button>
+                <button class="vibe-btn" id="btn-hipster" onclick="selectVibe('hipster')">📸 ברוקלין, DUMBO & וינטג'</button>
+                <button class="vibe-btn" id="btn-night" onclick="selectVibe('night')">🍸 ערב יוקרתי בוול סטריט</button>
+            </div>
+        </div>
 
-    <div class="container">
-        <h2 id="vibe-title">איפה אתה בניו יורק?</h2>
-        <p id="vibe-description">הכנס מיקום למעלה או בחר וויב כדי לקבל המלצות ומסלול כשר!</p>
+        <!-- Main Content (Places & Playlist) -->
+        <div class="content-card">
+            <div class="section-header">
+                <h2 id="vibe-title" class="vibe-title">🗽 טיימס סקוור & מידטאון</h2>
+                <p id="vibe-description" class="vibe-desc">הלב הפועם של מנהטן! אורות הניאון, ברודווי, והמקומות הכשרים הכי מוכרים וטעימים בעיר.</p>
+            </div>
 
-        <div class="music-section">
-            <h3>🎧 פלייליסט מודרני לדרך</h3>
-            <div class="song-list" id="song-list">
-                <div class="song-item">השירים המודרניים יופיעו כאן לפי הבחירה שלך...</div>
+            <!-- Kosher Places with Google Maps -->
+            <div class="places-heading">
+                <span>🍽️</span> מקומות כשרים מומלצים באזור (עם ניווט במפות)
+            </div>
+            <div class="places-grid" id="places-grid">
+                <!-- Injected via JS -->
+            </div>
+
+            <!-- Music Section with Audio Play button -->
+            <div class="music-section">
+                <div class="music-header">
+                    <div class="music-title">
+                        <span>🎵</span> הפלייליסט המושלם לוייב הזה
+                    </div>
+                </div>
+                <div class="song-list" id="song-list">
+                    <!-- Injected via JS -->
+                </div>
             </div>
         </div>
     </div>
 
+    <!-- Floating Audio Player Bar -->
+    <div class="now-playing-bar" id="audio-bar">
+        <button class="play-btn-circle playing" id="bar-play-toggle" onclick="toggleGlobalAudio()">⏸</button>
+        <div class="bar-info">
+            <div class="bar-title" id="bar-title">שם השיר</div>
+            <div class="bar-artist" id="bar-artist">אמן</div>
+        </div>
+        <button class="bar-close" onclick="stopAudio()">✕</button>
+    </div>
+
+    <!-- Hidden Audio Element -->
+    <audio id="global-audio" preload="auto"></audio>
+
     <script>
+        // Database of Vibes, Kosher Places with exact Google Maps URLs, and Songs
+        const vibesData = {
+            'times-square': {
+                title: '🗽 טיימס סקוור & מידטאון',
+                desc: 'הלב הפועם של מנהטן! אורות הניאון, מחזות הזמר של ברודווי, והמקומות הכשרים הכי קרובים וטעימים.',
+                places: [
+                    {
+                        name: 'Bravo Kosher Pizza',
+                        type: 'חלבי / פיצה',
+                        typeClass: 'type-dairy',
+                        address: '107 W 37th St (קרוב לטיימס סקוור)',
+                        info: 'הפיצה הכשרה המפורסמת ביותר במנהטן. משולשים ענקיים, פסטות וסלטים.',
+                        mapsQuery: 'Bravo+Kosher+Pizza+107+W+37th+St+New+York'
+                    },
+                    {
+                        name: 'Mr. Broadway',
+                        type: 'בשרי / גריל',
+                        typeClass: 'type-meat',
+                        address: '209 W 38th St (קרוב לשדרה ה-7)',
+                        info: 'סטייקהאוס כשר ותיק ואיכותי. בורגרים, סושי, שווארמה ובשרים פרימיום.',
+                        mapsQuery: 'Mr+Broadway+209+W+38th+St+New+York'
+                    },
+                    {
+                        name: 'Taam Tov',
+                        type: 'בשרי / בוכרי',
+                        typeClass: 'type-meat',
+                        address: '41 W 47th St (רובע היהלומים)',
+                        info: 'מסעדה בוכרית אותנטית וסודית בקומה ה-3. שיפודים, מרק לגמן ומאפים טריים.',
+                        mapsQuery: 'Taam+Tov+41+W+47th+St+New+York'
+                    }
+                ],
+                songs: [
+                    { title: 'Empire State of Mind', artist: 'Jay-Z ft. Alicia Keys', genre: 'NYC Classic 🗽' },
+                    { title: 'Whats Poppin', artist: 'Jack Harlow', genre: 'Midtown Energy 🔥' },
+                    { title: 'First Person Shooter', artist: 'Drake ft. J. Cole', genre: 'Hype Hip-Hop 🎤' }
+                ]
+            },
+            'morning': {
+                title: '☕ בוקר בסוהו וצ\'לסי',
+                desc: 'התחילו את היום בסטייל: מאפיות בוטיק כשרות, הליכה לאורך פארק המסילה (High Line) ושופינג ברחובות סוהו.',
+                places: [
+                    {
+                        name: 'Breads Bakery',
+                        type: 'מאפייה & קפה',
+                        typeClass: 'type-bakery',
+                        address: '18 E 16th St (Union Square)',
+                        info: 'בבקת השוקולד האגדית של ניו יורק, רוגלך חם, לחמי מחמצת וקפה מעולה.',
+                        mapsQuery: 'Breads+Bakery+18+E+16th+St+New+York'
+                    },
+                    {
+                        name: 'The Hungarian Pastry Shop',
+                        type: 'קפה & מאפים',
+                        typeClass: 'type-bakery',
+                        address: '1030 Amsterdam Ave',
+                        info: 'בית קפה וספרים מיתולוגי ורומנטי עם מאפים מיוחדים ואווירה ניו-יורקית.',
+                        mapsQuery: 'The+Hungarian+Pastry+Shop+New+York'
+                    },
+                    {
+                        name: 'Mocha Burger Bistro',
+                        type: 'בשרי / ביסטרו',
+                        typeClass: 'type-meat',
+                        address: '496 LaGuardia Pl (Greenwich Village)',
+                        info: 'ביסטרו המבורגרים יוקרתי ומודרני ממש ליד סוהו והווילג\'.',
+                        mapsQuery: 'Mocha+Burger+Bistro+496+LaGuardia+Pl+New+York'
+                    }
+                ],
+                songs: [
+                    { title: 'Snooze', artist: 'SZA', genre: 'Morning R&B ☕' },
+                    { title: 'Blinding Lights', artist: 'The Weeknd', genre: 'Urban Pop 🏙️' },
+                    { title: 'Houdini', artist: 'Dua Lipa', genre: 'SoHo Vibes ✨' }
+                ]
+            },
+            'museum': {
+                title: '🎨 סנטרל פארק & מוזיאונים',
+                desc: 'וייב רגוע ותרבותי: שיטוט בשבילי סנטרל פארק, ביקור במוזיאון המטרופוליטן או הטבע, ובייגל חם באפר ווסט סייד.',
+                places: [
+                    {
+                        name: 'Modern Bread and Bagel',
+                        type: 'חלבי / בייגל פרימיום',
+                        typeClass: 'type-dairy',
+                        address: '472 Columbus Ave (Upper West Side)',
+                        info: 'הבייגל המבוקש ביותר בעיר (גם 100% ללא גלוטן!). כריכי סלמון, גבינות וסלטים.',
+                        mapsQuery: 'Modern+Bread+and+Bagel+472+Columbus+Ave+New+York'
+                    },
+                    {
+                        name: 'Talia\'s Steakhouse',
+                        type: 'בשרי / גריל',
+                        typeClass: 'type-meat',
+                        address: '668 Amsterdam Ave',
+                        info: 'סטייקהאוס כשר באווירה חמימה עם מוזיקה חיה וישיבה בחוץ ליד הפארק.',
+                        mapsQuery: 'Talias+Steakhouse+668+Amsterdam+Ave+New+York'
+                    },
+                    {
+                        name: 'Saba\'s Pizza',
+                        type: 'חלבי / פיצרייה',
+                        typeClass: 'type-dairy',
+                        address: '403 Amsterdam Ave',
+                        info: 'פיצה כשרה קלאסית ואיכותית באפר ווסט סייד, מעולה לחטוף לפיקניק בפארק.',
+                        mapsQuery: 'Sabas+Pizza+403+Amsterdam+Ave+New+York'
+                    }
+                ],
+                songs: [
+                    { title: 'Save Your Tears', artist: 'The Weeknd', genre: 'Park Chill 🌿' },
+                    { title: 'vampire', artist: 'Olivia Rodrigo', genre: 'Alt Pop 🎵' },
+                    { title: 'Golden Hour', artist: 'JVKE', genre: 'Aesthetic Sunset 🌅' }
+                ]
+            },
+            'hipster': {
+                title: '📸 ברוקלין, DUMBO & וינטג\'',
+                desc: 'תצפית מהפנטת על הגשרים של מנהטן מ-DUMBO, חנויות וינטג\' בויליאמסבורג, והמעצמה הכשרה של קראון הייטס.',
+                places: [
+                    {
+                        name: 'Brooklyn Kosher Grill (BKG)',
+                        type: 'בשרי / גריל',
+                        typeClass: 'type-meat',
+                        address: '566 Empire Blvd (Brooklyn)',
+                        info: 'המבורגרים מושחתים, כנפיים, קריספי צ\'יקן ורטבים מיוחדים.',
+                        mapsQuery: 'Brooklyn+Kosher+Grill+Empire+Blvd+Brooklyn'
+                    },
+                    {
+                        name: 'Boeuf & Bun',
+                        type: 'בשרי / גורמה בורגר',
+                        typeClass: 'type-meat',
+                        address: '271 Kingston Ave (Crown Heights)',
+                        info: 'בורגר בר היפסטרי מפורסם ברמה הגבוהה ביותר עם בירות בוטיק.',
+                        mapsQuery: 'Boeuf+and+Bun+271+Kingston+Ave+Brooklyn'
+                    },
+                    {
+                        name: 'Izzy\'s Brooklyn Smokehouse',
+                        type: 'בשרי / ברביקיו מעושן',
+                        typeClass: 'type-meat',
+                        address: '397 Troy Ave (Brooklyn)',
+                        info: 'המעשנה הכשרה מס\' 1 בניו יורק! בריסקט וצלעות שנמסים בפה (זכה בפרסים בינלאומיים).',
+                        mapsQuery: 'Izzys+Brooklyn+Smokehouse+397+Troy+Ave+Brooklyn'
+                    }
+                ],
+                songs: [
+                    { title: 'Sunflower', artist: 'Post Malone & Swae Lee', genre: 'Brooklyn Vibe 🌻' },
+                    { title: 'Lovin On Me', artist: 'Jack Harlow', genre: 'Hip Hop Flow 👟' },
+                    { title: 'Cruel Summer', artist: 'Taylor Swift', genre: 'Indie Pop 🌉' }
+                ]
+            },
+            'night': {
+                title: '🍸 ערב יוקרתי בוול סטריט & דאונטאון',
+                desc: 'חווית לילה מנהטנית: גורד שחקים מוארים, מסעדות שף כשרות מהטופ העולמי, ומשקאות ברמה גבוהה.',
+                places: [
+                    {
+                        name: 'Reserve Cut',
+                        type: 'בשרי / שף יוקרתי',
+                        typeClass: 'type-meat',
+                        address: '40 Broad St (The Setai Wall St)',
+                        info: 'אחת ממסעדות הבשרים הכשרות המפוארות בעולם. בשר וואגיו, סושי בר ועיצוב עילי.',
+                        mapsQuery: 'Reserve+Cut+40+Broad+St+New+York'
+                    },
+                    {
+                        name: 'Wall Street Grill',
+                        type: 'בשרי / רופטופ יוקרתי',
+                        typeClass: 'type-meat',
+                        address: '128 Pearl St (Financial District)',
+                        info: 'מסעדת גג יוקרתית עם נוף מדהים, קוקטיילים ברמה עולמית ובשרים מיושנים.',
+                        mapsQuery: 'Wall+Street+Grill+128+Pearl+St+New+York'
+                    },
+                    {
+                        name: 'Mocha Red',
+                        type: 'בשרי / לאונג\' בר',
+                        typeClass: 'type-meat',
+                        address: '127 4th Ave (Near Union Sq)',
+                        info: 'סטייקהאוס ובר קוקטיילים בעיצוב אומנותי מודרני ואווירת מסיבה.',
+                        mapsQuery: 'Mocha+Red+127+4th+Ave+New+York'
+                    }
+                ],
+                songs: [
+                    { title: 'Rich Flex', artist: 'Drake & 21 Savage', genre: 'Night Life 🌃' },
+                    { title: 'SICKO MODE', artist: 'Travis Scott', genre: 'Late Night Hype 🔥' },
+                    { title: 'Starboy', artist: 'The Weeknd ft. Daft Punk', genre: 'Luxury Synth 🍸' }
+                ]
+            }
+        };
+
+        // State for music player
+        let currentPlayingSong = null;
+        const audioElement = document.getElementById('global-audio');
+        const audioBar = document.getElementById('audio-bar');
+        const barPlayToggle = document.getElementById('bar-play-toggle');
+        const barTitle = document.getElementById('bar-title');
+        const barArtist = document.getElementById('bar-artist');
+
+        // Select a vibe and render UI
+        function selectVibe(vibeKey) {
+            // Update buttons active state
+            document.querySelectorAll('.vibe-btn').forEach(btn => btn.classList.remove('active'));
+            const activeBtn = document.getElementById(`btn-${vibeKey}`);
+            if (activeBtn) activeBtn.classList.add('active');
+
+            const data = vibesData[vibeKey] || vibesData['times-square'];
+
+            // Update Titles
+            document.getElementById('vibe-title').innerText = data.title;
+            document.getElementById('vibe-description').innerText = data.desc;
+
+            // Render Places with Google Maps Buttons
+            const placesContainer = document.getElementById('places-grid');
+            placesContainer.innerHTML = data.places.map(place => `
+                <div class="place-card">
+                    <div>
+                        <div class="place-top">
+                            <span class="place-name">${place.name}</span>
+                            <span class="place-type ${place.typeClass}">${place.type}</span>
+                        </div>
+                        <div class="place-address">📍 ${place.address}</div>
+                        <div class="place-info">${place.info}</div>
+                    </div>
+                    <a href="https://www.google.com/maps/search/?api=1&query=${place.mapsQuery}" 
+                       target="_blank" 
+                       rel="noopener noreferrer" 
+                       class="maps-btn">
+                        <span>🗺️</span> פתח מיקום ב-Google Maps
+                    </a>
+                </div>
+            `).join('');
+
+            // Render Songs with Play Button & Spotify Link
+            const songContainer = document.getElementById('song-list');
+            songContainer.innerHTML = data.songs.map((song, idx) => {
+                const songId = `song-${vibeKey}-${idx}`;
+                const spotifySearch = encodeURIComponent(`${song.title} ${song.artist}`);
+                return `
+                    <div class="song-card" id="card-${songId}">
+                        <div class="song-details">
+                            <button class="play-btn-circle" id="btn-${songId}" 
+                                    onclick="playSongPreview('${song.title}', '${song.artist}', '${songId}')">
+                                ▶
+                            </button>
+                            <div class="song-info">
+                                <span class="song-name">${song.title}</span>
+                                <span class="song-artist">${song.artist}</span>
+                            </div>
+                        </div>
+                        <div style="display:flex; align-items:center;">
+                            <span class="song-genre">${song.genre}</span>
+                            <a href="https://open.spotify.com/search/${spotifySearch}" 
+                               target="_blank" 
+                               rel="noopener noreferrer" 
+                               class="spotify-link" 
+                               title="האזן לשיר המלא ב-Spotify">
+                                🟢 Spotify
+                            </a>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Search handler
         function searchByLocation() {
             const input = document.getElementById('user-location').value.trim().toLowerCase();
-            const title = document.getElementById('vibe-title');
-            const desc = document.getElementById('vibe-description');
-            const songList = document.getElementById('song-list');
-
             if (!input) {
-                alert("אנא הכנס מיקום (למשל: SoHo, Times Square, Brooklyn)");
+                alert("אנא הזן מקום או שכונה (למשל: Times Square, SoHo, Brooklyn, Central Park)");
                 return;
             }
 
-            if (input.includes("times square") || input.includes("טיימס סקוור") || input.includes("midtown")) {
-                title.innerText = "📍 המלצות כשרות ב-Times Square & Midtown";
-                desc.innerText = "תצפית Top of the Rock, ואז ארוחה כשרה: פיצה כשרה מעולה ב-Bravo Kosher Pizza או בשר כשר ב-Mr. Broadway!";
-                songList.innerHTML = `
-                    <div class="song-item"><span>Jack Harlow - Whats Poppin</span> <span class="genre-badge">היפ הופ מודרני 👟</span></div>
-                    <div class="song-item"><span>Drake - First Person Shooter</span> <span class="genre-badge">היפ הופ / ראפ 🎤</span></div>
-                `;
-            } else if (input.includes("soho") || input.includes("סוהו")) {
+            if (input.includes("time") || input.includes("טיימס") || input.includes("midtown") || input.includes("מידטאון") || input.includes("broadway")) {
+                selectVibe('times-square');
+            } else if (input.includes("soho") || input.includes("סוהו") || input.includes("chelsea") || input.includes("צ'לסי") || input.includes("union") || input.includes("בוקר")) {
                 selectVibe('morning');
-            } else if (input.includes("brooklyn") || input.includes("ברוקלין") || input.includes("williamsburg")) {
+            } else if (input.includes("park") || input.includes("פארק") || input.includes("central") || input.includes("museum") || input.includes("מוזיאון") || input.includes("upper")) {
+                selectVibe('museum');
+            } else if (input.includes("brooklyn") || input.includes("ברוקלין") || input.includes("dumbo") || input.includes("crown") || input.includes("דמבו") || input.includes("ויליאמסבורג")) {
                 selectVibe('hipster');
+            } else if (input.includes("wall") || input.includes("night") || input.includes("לילה") || input.includes("ערב") || input.includes("וול סטריט") || input.includes("bar")) {
+                selectVibe('night');
             } else {
-                title.innerText = `📍 המלצות לאזור ${input}`;
-                desc.innerText = `מצאנו מקומות כשרים מעולים במיקום שלך! מומלץ להתחיל עם קפה ומאפה כשר בקרבת מקום ולטייל ברחובות הראשיים.`;
-                songList.innerHTML = `
-                    <div class="song-item"><span>Travis Scott - FE!N</span> <span class="genre-badge">טראפ מודרני 🎧</span></div>
-                    <div class="song-item"><span>Post Malone - Chemical</span> <span class="genre-badge">פופ מודרני 🎸</span></div>
-                `;
+                // Default fallback to Times square with notification
+                selectVibe('times-square');
+                document.getElementById('vibe-title').innerText = `🗽 תוצאות חיפוש עבור "${input}"`;
             }
         }
 
-        function selectVibe(type) {
-            const title = document.getElementById('vibe-title');
-            const desc = document.getElementById('vibe-description');
-            const songList = document.getElementById('song-list');
-
-            if (type === 'morning') {
-                title.innerText = "☕ בוקר כשר בסוהו";
-                desc.innerText = "קפה ומאפה כשר ב-Breads Bakery, סיבוב שופינג ברחוב Broadway והליכה על פארק ההיי-ליין (High Line).";
-                songList.innerHTML = `
-                    <div class="song-item"><span>SZA - Snooze</span> <span class="genre-badge">R&B מודרני ☀️</span></div>
-                    <div class="song-item"><span>Dua Lipa - Houdini</span> <span class="genre-badge">פופ עדכני ☕</span></div>
-                    <div class="song-item"><span>The Weeknd - Blinding Lights</span> <span class="genre-badge">פופ אורבני 🗽</span></div>
-                `;
-            } else if (type === 'night') {
-                title.innerText = "🍸 לילה אורבני כשר";
-                desc.innerText = "מסעדת בשרים כשרה ויוקרתית בערב (כמו Reserve Cut או Wall Street Grill), ואחריה טיול באורות הלילה של מנהטן.";
-                songList.innerHTML = `
-                    <div class="song-item"><span>Drake ft. 21 Savage - Rich Flex</span> <span class="genre-badge">היפ הופ מודרני 🏙️</span></div>
-                    <div class="song-item"><span>Travis Scott - SICKO MODE</span> <span class="genre-badge">טראפ קצבי 👟</span></div>
-                    <div class="song-item"><span>Jay-Z ft. Alicia Keys - Empire State of Mind</span> <span class="genre-badge">ההמנון של ניו יורק 🌃</span></div>
-                `;
-            } else if (type === 'hipster') {
-                title.innerText = "📸 ברוקלין & וינטג' כשר";
-                desc.innerText = "חנויות יד שנייה בוויליאמסבורג, תצפית מדהימה מפארק דאמבו (DUMBO), וארוחת המבורגר כשר ב-Brooklyn Kosher Grill.";
-                songList.innerHTML = `
-                    <div class="song-item"><span>Post Malone - Sunflower</span> <span class="genre-badge">היפ הופ / פופ 🎧</span></div>
-                    <div class="song-item"><span>Jack Harlow - Lovin On Me</span> <span class="genre-badge">היפ הופ עדכני 👟</span></div>
-                `;
-            } else if (type === 'museum') {
-                title.innerText = "🎨 תרבות וסנטרל פארק (100% כשר)";
-                desc.innerText = "בייגל כשר מטורף ב-Modern Bread and Bagel (ב-Upper West Side), טיול בסנטרל פארק וביקור במוזיאון המוזיקה או הטבע.";
-                songList.innerHTML = `
-                    <div class="song-item"><span>The Weeknd - Save Your Tears</span> <span class="genre-badge">פופ מודרני 🎹</span></div>
-                    <div class="song-item"><span>Olivia Rodrigo - vampire</span> <span class="genre-badge">פופ-רוק עדכני 🎤</span></div>
-                `;
+        function handleKeyPress(e) {
+            if (e.key === 'Enter') {
+                searchByLocation();
             }
         }
+
+        // Live Audio Player using iTunes Search 30s Audio Preview API (Instant, Free & CORS enabled)
+        async function playSongPreview(title, artist, songId) {
+            const btn = document.getElementById(`btn-${songId}`);
+
+            // If this song is already playing, pause it
+            if (currentPlayingSong === songId && !audioElement.paused) {
+                audioElement.pause();
+                updatePlayUI(false);
+                return;
+            }
+
+            // If resuming current paused song
+            if (currentPlayingSong === songId && audioElement.paused && audioElement.src) {
+                audioElement.play();
+                updatePlayUI(true);
+                return;
+            }
+
+            // Set loading icon
+            if (btn) btn.innerText = '⏳';
+
+            try {
+                const query = encodeURIComponent(`${title} ${artist}`);
+                const response = await fetch(`https://itunes.apple.com/search?term=${query}&media=music&entity=song&limit=1`);
+                const data = await response.json();
+
+                if (data.results && data.results.length > 0 && data.results[0].previewUrl) {
+                    const track = data.results[0];
+                    audioElement.src = track.previewUrl;
+                    audioElement.play();
+                    currentPlayingSong = songId;
+
+                    // Update floating bar
+                    barTitle.innerText = track.trackName || title;
+                    barArtist.innerText = track.artistName || artist;
+                    audioBar.classList.add('visible');
+
+                    updatePlayUI(true);
+                } else {
+                    // Fallback if iTunes preview unavailable
+                    alert(`לא נמצאה תצוגה מקדימה לשיר "${title}". נסה ללחוץ על קישור ה-Spotify!`);
+                    if (btn) btn.innerText = '▶';
+                }
+            } catch (err) {
+                console.error("Audio fetch error:", err);
+                alert(`שגיאה בטעינת השיר. נסה ללחוץ על קישור ה-Spotify לשמיעה ישירה!`);
+                if (btn) btn.innerText = '▶';
+            }
+        }
+
+        function updatePlayUI(isPlaying) {
+            // Reset all cards
+            document.querySelectorAll('.play-btn-circle').forEach(b => {
+                b.innerText = '▶';
+                b.classList.remove('playing');
+            });
+            document.querySelectorAll('.song-card').forEach(c => c.classList.remove('playing'));
+
+            if (isPlaying && currentPlayingSong) {
+                const currentBtn = document.getElementById(`btn-${currentPlayingSong}`);
+                const currentCard = document.getElementById(`card-${currentPlayingSong}`);
+                if (currentBtn) {
+                    currentBtn.innerText = '⏸';
+                    currentBtn.classList.add('playing');
+                }
+                if (currentCard) currentCard.classList.add('playing');
+                barPlayToggle.innerText = '⏸';
+            } else {
+                barPlayToggle.innerText = '▶';
+            }
+        }
+
+        function toggleGlobalAudio() {
+            if (audioElement.paused) {
+                audioElement.play();
+                updatePlayUI(true);
+            } else {
+                audioElement.pause();
+                updatePlayUI(false);
+            }
+        }
+
+        function stopAudio() {
+            audioElement.pause();
+            audioElement.currentTime = 0;
+            currentPlayingSong = null;
+            audioBar.classList.remove('visible');
+            updatePlayUI(false);
+        }
+
+        audioElement.onended = () => {
+            updatePlayUI(false);
+            audioBar.classList.remove('visible');
+        };
+
+        // Initialize with default vibe on page load
+        window.onload = () => {
+            selectVibe('times-square');
+        };
     </script>
 </body>
 </html>
