@@ -14,7 +14,7 @@
             --accent: #1fe064;
             --accent-glow: rgba(31, 224, 100, 0.35);
             --bg-dark: #0f1117;
-            --card-bg: rgba(20, 23, 32, 0.88);
+            --card-bg: rgba(18, 22, 32, 0.9);
             --card-border: rgba(255, 255, 255, 0.12);
             --text-main: #ffffff;
             --text-muted: #a0a6b5;
@@ -41,14 +41,14 @@
         }
 
         .main-wrapper {
-            max-width: 900px;
+            max-width: 950px;
             margin: 0 auto;
         }
 
         /* Header */
         header {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             animation: fadeInDown 0.8s ease-out;
         }
 
@@ -100,22 +100,20 @@
         }
 
         /* Search Box */
-        .search-container {
+        .search-section {
             background: var(--card-bg);
             border: 1px solid var(--card-border);
-            padding: 16px;
-            border-radius: 18px;
-            backdrop-filter: blur(14px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            display: flex;
-            gap: 10px;
+            padding: 20px;
+            border-radius: 20px;
+            backdrop-filter: blur(16px);
+            box-shadow: 0 10px 35px rgba(0,0,0,0.5);
             margin-bottom: 25px;
-            transition: border-color 0.3s, box-shadow 0.3s;
         }
 
-        .search-container:focus-within {
-            border-color: var(--primary);
-            box-shadow: 0 10px 35px var(--primary-glow);
+        .search-container {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
         }
 
         .search-input {
@@ -132,6 +130,7 @@
 
         .search-input:focus {
             border-color: var(--primary);
+            box-shadow: 0 0 15px var(--primary-glow);
         }
 
         .search-btn {
@@ -153,6 +152,38 @@
         .search-btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 20px var(--primary-glow);
+        }
+
+        .gps-btn {
+            background: rgba(31, 224, 100, 0.15);
+            color: #1fe064;
+            border: 1px solid rgba(31, 224, 100, 0.35);
+            padding: 8px 16px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border-radius: 10px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: 0.25s;
+        }
+
+        .gps-btn:hover {
+            background: #1fe064;
+            color: #000;
+            box-shadow: 0 0 15px var(--accent-glow);
+        }
+
+        .search-hints {
+            font-size: 0.82rem;
+            color: #8c93a4;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 8px;
         }
 
         /* Vibe Buttons (Pills) */
@@ -234,12 +265,26 @@
             line-height: 1.6;
         }
 
+        .search-badge-info {
+            display: inline-block;
+            background: rgba(243, 156, 18, 0.15);
+            color: #f39c12;
+            border: 1px solid rgba(243, 156, 18, 0.35);
+            padding: 4px 12px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            margin-top: 8px;
+        }
+
         /* Places Grid */
         .places-heading {
             font-size: 1.3rem;
             margin-bottom: 16px;
             display: flex;
             align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
             gap: 10px;
             color: #fff;
         }
@@ -248,7 +293,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 18px;
-            margin-bottom: 35px;
+            margin-bottom: 30px;
         }
 
         .place-card {
@@ -301,6 +346,19 @@
             font-weight: bold;
         }
 
+        .distance-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            background: rgba(31, 224, 100, 0.15);
+            color: #1fe064;
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
         .type-meat { background: rgba(231, 76, 60, 0.2); color: #ff6b6b; border: 1px solid rgba(231, 76, 60, 0.4); }
         .type-dairy { background: rgba(52, 152, 219, 0.2); color: #74b9ff; border: 1px solid rgba(52, 152, 219, 0.4); }
         .type-bakery { background: rgba(243, 156, 18, 0.2); color: #f39c12; border: 1px solid rgba(243, 156, 18, 0.4); }
@@ -342,6 +400,40 @@
             color: #ffffff;
             box-shadow: 0 4px 15px rgba(66, 133, 244, 0.4);
             transform: scale(1.02);
+        }
+
+        /* Live Google Maps Explore Box */
+        .explore-more-box {
+            background: rgba(66, 133, 244, 0.08);
+            border: 1px dashed rgba(66, 133, 244, 0.4);
+            border-radius: 14px;
+            padding: 16px;
+            text-align: center;
+            margin-bottom: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .explore-more-btn {
+            background: #4285f4;
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: 0.25s;
+        }
+
+        .explore-more-btn:hover {
+            background: #3367d6;
+            box-shadow: 0 4px 15px rgba(66, 133, 244, 0.5);
+            transform: translateY(-2px);
         }
 
         /* Music Playlist Section */
@@ -590,14 +682,22 @@
             </div>
         </header>
 
-        <!-- Search Box -->
-        <div class="search-container">
-            <input type="text" id="user-location" class="search-input" 
-                   placeholder="איפה אתה נמצא? (למשל: Times Square, DUMBO, SoHo, Brooklyn, Central Park...)" 
-                   onkeypress="handleKeyPress(event)">
-            <button class="search-btn" onclick="searchByLocation()">
-                <span>🔍</span> מצא לי וייב
-            </button>
+        <!-- Search Box with GPS -->
+        <div class="search-section">
+            <div class="search-container">
+                <input type="text" id="user-location" class="search-input" 
+                       placeholder="הקלד כל כתובת או נקודת ציון בניו יורק (למשל: Empire State Building, 126 Hoyt St, SoHo...)" 
+                       onkeypress="handleKeyPress(event)">
+                <button class="search-btn" onclick="searchByLocation()">
+                    <span>🔍</span> חפש מיקום
+                </button>
+            </div>
+            <div class="search-hints">
+                <span>💡 תומך בכל כתובת, רחוב, בניין מפורסם או שכונה בניו יורק</span>
+                <button class="gps-btn" onclick="useCurrentGPS()">
+                    <span>📍</span> השתמש במיקום הנוכחי שלי (GPS)
+                </button>
+            </div>
         </div>
 
         <!-- Vibe Pills -->
@@ -617,14 +717,28 @@
             <div class="section-header">
                 <h2 id="vibe-title" class="vibe-title">🗽 טיימס סקוור & מידטאון</h2>
                 <p id="vibe-description" class="vibe-desc">הלב הפועם של מנהטן! אורות הניאון, ברודווי, והמקומות הכשרים הכי מוכרים וטעימים בעיר.</p>
+                <div id="search-badge-container"></div>
             </div>
 
             <!-- Kosher Places with Google Maps -->
             <div class="places-heading">
-                <span>🍽️</span> מקומות כשרים מומלצים באזור (עם ניווט במפות)
+                <span id="places-heading-text">🍽️ מקומות כשרים מומלצים באזור (ממוינים לפי מרחק)</span>
             </div>
             <div class="places-grid" id="places-grid">
                 <!-- Injected via JS -->
+            </div>
+
+            <!-- Live Google Maps Search Box for any specific point -->
+            <div class="explore-more-box" id="explore-box">
+                <div style="font-weight: 700; color: #fff;">רוצה לראות עוד מסעדות כשרות סביב המיקום המדויק שלך?</div>
+                <div style="font-size: 0.88rem; color: #a0a6b5;" id="explore-desc">חיפוש ישיר במפות גוגל עבור כל המקומות הכשרים בסביבה.</div>
+                <a href="https://www.google.com/maps/search/kosher+restaurant+near+Times+Square+New+York" 
+                   target="_blank" 
+                   rel="noopener noreferrer" 
+                   id="explore-btn" 
+                   class="explore-more-btn">
+                    <span>📍</span> פתח חיפוש כשר חי ב-Google Maps
+                </a>
             </div>
 
             <!-- Music Section with Audio Play button and Refresh -->
@@ -667,206 +781,292 @@
             'night': 'https://images.unsplash.com/photo-1485871981521-5b1fd3805eee?q=80&w=1920&auto=format&fit=crop'         // Wall St & Lower Manhattan Night Skyline
         };
 
-        // Database of Vibes, Kosher Places with Google Maps, and Rich Pools of Songs
-        const vibesData = {
-            'times-square': {
-                title: '🗽 טיימס סקוור & מידטאון',
-                desc: 'הלב הפועם של מנהטן! אורות הניאון, מחזות הזמר של ברודווי, והמקומות הכשרים הכי קרובים וטעימים.',
-                places: [
-                    {
-                        name: 'Bravo Kosher Pizza',
-                        type: 'חלבי / פיצה',
-                        typeClass: 'type-dairy',
-                        address: '107 W 37th St (קרוב לטיימס סקוור)',
-                        info: 'הפיצה הכשרה המפורסמת ביותר במנהטן. משולשים ענקיים, פסטות וסלטים.',
-                        mapsQuery: 'Bravo+Kosher+Pizza+107+W+37th+St+New+York'
-                    },
-                    {
-                        name: 'Mr. Broadway',
-                        type: 'בשרי / גריל',
-                        typeClass: 'type-meat',
-                        address: '209 W 38th St (קרוב לשדרה ה-7)',
-                        info: 'סטייקהאוס כשר ותיק ואיכותי. בורגרים, סושי, שווארמה ובשרים פרימיום.',
-                        mapsQuery: 'Mr+Broadway+209+W+38th+St+New+York'
-                    },
-                    {
-                        name: 'Taam Tov',
-                        type: 'בשרי / בוכרי',
-                        typeClass: 'type-meat',
-                        address: '41 W 47th St (רובע היהלומים)',
-                        info: 'מסעדה בוכרית אותנטית וסודית בקומה ה-3. שיפודים, מרק לגמן ומאפים טריים.',
-                        mapsQuery: 'Taam+Tov+41+W+47th+St+New+York'
-                    }
-                ],
-                songsPool: [
-                    { title: 'Run This Town', artist: 'Jay-Z ft. Rihanna & Kanye West', genre: 'NYC Anthem 🗽' },
-                    { title: 'Empire State of Mind', artist: 'Jay-Z ft. Alicia Keys', genre: 'NYC Classic 🏙️' },
-                    { title: 'The Thrill', artist: 'Wiz Khalifa', genre: 'Midtown High Energy 🔥' },
-                    { title: 'Whats Poppin', artist: 'Jack Harlow', genre: 'Midtown Flow 🎤' },
-                    { title: 'First Person Shooter', artist: 'Drake ft. J. Cole', genre: 'Hype Hip-Hop 🚀' },
-                    { title: 'American Boy', artist: 'Estelle ft. Kanye West', genre: 'NYC Groove ✨' },
-                    { title: 'Stronger', artist: 'Kanye West', genre: 'Broadway Power ⚡' },
-                    { title: 'Can\'t Tell Me Nothing', artist: 'Kanye West', genre: 'City Boss 🌃' }
-                ]
+        // Master Database of Top Kosher Places in NYC with exact coordinates & addresses
+        const allKosherPlaces = [
+            // Midtown / Times Square Area
+            {
+                name: 'Bravo Kosher Pizza',
+                type: 'חלבי / פיצה',
+                typeClass: 'type-dairy',
+                lat: 40.7524,
+                lng: -73.9878,
+                address: '107 W 37th St, New York, NY 10018',
+                info: 'הפיצה הכשרה המפורסמת ביותר במנהטן (ליד טיימס סקוור והאמפייר סטייט). משולשים ענקיים, פסטות וסלטים.',
+                vibe: 'times-square'
             },
-            'morning': {
-                title: '☕ בוקר בסוהו וצ\'לסי',
-                desc: 'התחילו את היום בסטייל: מאפיות בוטיק כשרות, הליכה לאורך פארק המסילה (High Line) ושופינג ברחובות סוהו.',
-                places: [
-                    {
-                        name: 'Breads Bakery',
-                        type: 'מאפייה & קפה',
-                        typeClass: 'type-bakery',
-                        address: '18 E 16th St (Union Square)',
-                        info: 'בבקת השוקולד האגדית של ניו יורק, רוגלך חם, לחמי מחמצת וקפה מעולה.',
-                        mapsQuery: 'Breads+Bakery+18+E+16th+St+New+York'
-                    },
-                    {
-                        name: 'The Hungarian Pastry Shop',
-                        type: 'קפה & מאפים',
-                        typeClass: 'type-bakery',
-                        address: '1030 Amsterdam Ave',
-                        info: 'בית קפה וספרים מיתולוגי ורומנטי עם מאפים מיוחדים ואווירה ניו-יורקית.',
-                        mapsQuery: 'The+Hungarian+Pastry+Shop+New+York'
-                    },
-                    {
-                        name: 'Mocha Burger Bistro',
-                        type: 'בשרי / ביסטרו',
-                        typeClass: 'type-meat',
-                        address: '496 LaGuardia Pl (Greenwich Village)',
-                        info: 'ביסטרו המבורגרים יוקרתי ומודרני ממש ליד סוהו והווילג\'.',
-                        mapsQuery: 'Mocha+Burger+Bistro+496+LaGuardia+Pl+New+York'
-                    }
-                ],
-                songsPool: [
-                    { title: 'Rehab', artist: 'Rihanna', genre: 'Morning Smooth R&B ☕' },
-                    { title: 'Bad Habit', artist: 'Steve Lacy', genre: 'SoHo Indie Vibes 🕶️' },
-                    { title: 'Dark Red', artist: 'Steve Lacy', genre: 'Chill Acoustic Flow 🎸' },
-                    { title: 'American Boy', artist: 'Estelle ft. Kanye West', genre: 'SoHo Shopping 🛍️' },
-                    { title: 'Snooze', artist: 'SZA', genre: 'Morning R&B ☕' },
-                    { title: 'Houdini', artist: 'Dua Lipa', genre: 'SoHo Energy ✨' },
-                    { title: 'Blinding Lights', artist: 'The Weeknd', genre: 'Urban Pop 🏙️' },
-                    { title: 'Stay', artist: 'Rihanna ft. Mikky Ekko', genre: 'Coffee & Chill 🌧️' }
-                ]
+            {
+                name: 'Mr. Broadway',
+                type: 'בשרי / גריל וסטייקים',
+                typeClass: 'type-meat',
+                lat: 40.7535,
+                lng: -73.9892,
+                address: '209 W 38th St, New York, NY 10018',
+                info: 'סטייקהאוס כשר ותיק ואיכותי במידטאון. בורגרים, סושי בר, שווארמה ובשרים פרימיום.',
+                vibe: 'times-square'
             },
-            'museum': {
-                title: '🎨 סנטרל פארק & מוזיאונים',
-                desc: 'וייב רגוע ותרבותי: שיטוט בשבילי סנטרל פארק, ביקור במוזיאון המטרופוליטן או הטבע, ובייגל חם באפר ווסט סייד.',
-                places: [
-                    {
-                        name: 'Modern Bread and Bagel',
-                        type: 'חלבי / בייגל פרימיום',
-                        typeClass: 'type-dairy',
-                        address: '472 Columbus Ave (Upper West Side)',
-                        info: 'הבייגל המבוקש ביותר בעיר (גם 100% ללא גלוטן!). כריכי סלמון, גבינות וסלטים.',
-                        mapsQuery: 'Modern+Bread+and+Bagel+472+Columbus+Ave+New+York'
-                    },
-                    {
-                        name: 'Talia\'s Steakhouse',
-                        type: 'בשרי / גריל',
-                        typeClass: 'type-meat',
-                        address: '668 Amsterdam Ave',
-                        info: 'סטייקהאוס כשר באווירה חמימה עם מוזיקה חיה וישיבה בחוץ ליד הפארק.',
-                        mapsQuery: 'Talias+Steakhouse+668+Amsterdam+Ave+New+York'
-                    },
-                    {
-                        name: 'Saba\'s Pizza',
-                        type: 'חלבי / פיצרייה',
-                        typeClass: 'type-dairy',
-                        address: '403 Amsterdam Ave',
-                        info: 'פיצה כשרה קלאסית ואיכותית באפר ווסט סייד, מעולה לחטוף לפיקניק בפארק.',
-                        mapsQuery: 'Sabas+Pizza+403+Amsterdam+Ave+New+York'
-                    }
-                ],
-                songsPool: [
-                    { title: 'Call Me Maybe', artist: 'Carly Rae Jepsen', genre: 'Feel Good Park Pop 🌸' },
-                    { title: 'Golden Hour', artist: 'JVKE', genre: 'Aesthetic Sunset 🌅' },
-                    { title: 'Save Your Tears', artist: 'The Weeknd', genre: 'Park Chill 🌿' },
-                    { title: 'vampire', artist: 'Olivia Rodrigo', genre: 'Alt Pop Drama 🎵' },
-                    { title: 'Cruel Summer', artist: 'Taylor Swift', genre: 'Summer Breeze 🍃' },
-                    { title: 'As It Was', artist: 'Harry Styles', genre: 'Central Park Walk 👟' },
-                    { title: 'Diamonds', artist: 'Rihanna', genre: 'Museum Glow 💎' }
-                ]
+            {
+                name: 'Taam Tov',
+                type: 'בשרי / בוכרי אותנטי',
+                typeClass: 'type-meat',
+                lat: 40.7574,
+                lng: -73.9804,
+                address: '41 W 47th St #3, New York, NY 10036',
+                info: 'מסעדה בוכרית אותנטית וסודית בקומה ה-3 ברובע היהלומים. שיפודים, מרק לגמן ומאפים טריים.',
+                vibe: 'times-square'
             },
-            'hipster': {
-                title: '📸 ברוקלין, DUMBO & וינטג\'',
-                desc: 'תצפית מהפנטת על הגשרים של מנהטן מ-DUMBO, חנויות וינטג\' בויליאמסבורג, והמעצמה הכשרה של קראון הייטס.',
-                places: [
-                    {
-                        name: 'Brooklyn Kosher Grill (BKG)',
-                        type: 'בשרי / גריל',
-                        typeClass: 'type-meat',
-                        address: '566 Empire Blvd (Brooklyn)',
-                        info: 'המבורגרים מושחתים, כנפיים, קריספי צ\'יקן ורטבים מיוחדים.',
-                        mapsQuery: 'Brooklyn+Kosher+Grill+Empire+Blvd+Brooklyn'
-                    },
-                    {
-                        name: 'Boeuf & Bun',
-                        type: 'בשרי / גורמה בורגר',
-                        typeClass: 'type-meat',
-                        address: '271 Kingston Ave (Crown Heights)',
-                        info: 'בורגר בר היפסטרי מפורסם ברמה הגבוהה ביותר עם בירות בוטיק.',
-                        mapsQuery: 'Boeuf+and+Bun+271+Kingston+Ave+Brooklyn'
-                    },
-                    {
-                        name: 'Izzy\'s Brooklyn Smokehouse',
-                        type: 'בשרי / ברביקיו מעושן',
-                        typeClass: 'type-meat',
-                        address: '397 Troy Ave (Brooklyn)',
-                        info: 'המעשנה הכשרה מס\' 1 בניו יורק! בריסקט וצלעות שנמסים בפה (זכה בפרסים בינלאומיים).',
-                        mapsQuery: 'Izzys+Brooklyn+Smokehouse+397+Troy+Ave+Brooklyn'
-                    }
-                ],
-                songsPool: [
-                    { title: 'The Thrill', artist: 'Wiz Khalifa', genre: 'DUMBO Nostalgia 🌉' },
-                    { title: 'Sunflower', artist: 'Post Malone & Swae Lee', genre: 'Brooklyn Vibe 🌻' },
-                    { title: 'American Boy', artist: 'Estelle ft. Kanye West', genre: 'Bridge Crossing 🗽' },
-                    { title: 'Lovin On Me', artist: 'Jack Harlow', genre: 'Hip Hop Flow 👟' },
-                    { title: 'Run This Town', artist: 'Jay-Z ft. Rihanna', genre: 'Brooklyn King 👑' },
-                    { title: 'Bad Habit', artist: 'Steve Lacy', genre: 'Williamsburg Indie 🎨' },
-                    { title: 'Black and Yellow', artist: 'Wiz Khalifa', genre: 'Classic Hip-Hop 🟨' },
-                    { title: 'HUMBLE.', artist: 'Kendrick Lamar', genre: 'Street Beats 🔥' }
-                ]
+            {
+                name: 'Mendy\'s Grand Central',
+                type: 'בשרי / דלי ניו-יורקי',
+                typeClass: 'type-meat',
+                lat: 40.7527,
+                lng: -73.9772,
+                address: '89 E 42nd St (Grand Central Concourse)',
+                info: 'דלי יהודי קלאסי בתוך תחנת גרנד סנטרל. כריכי קורנביף ופסטרמה ענקיים, מרק קניידלך.',
+                vibe: 'times-square'
             },
-            'night': {
-                title: '🍸 ערב יוקרתי בוול סטריט & דאונטאון',
-                desc: 'חווית לילה מנהטנית: גורד שחקים מוארים, מסעדות שף כשרות מהטופ העולמי, ומשקאות ברמה גבוהה.',
-                places: [
-                    {
-                        name: 'Reserve Cut',
-                        type: 'בשרי / שף יוקרתי',
-                        typeClass: 'type-meat',
-                        address: '40 Broad St (The Setai Wall St)',
-                        info: 'אחת ממסעדות הבשרים הכשרות המפוארות בעולם. בשר וואגיו, סושי בר ועיצוב עילי.',
-                        mapsQuery: 'Reserve+Cut+40+Broad+St+New+York'
-                    },
-                    {
-                        name: 'Wall Street Grill',
-                        type: 'בשרי / רופטופ יוקרתי',
-                        typeClass: 'type-meat',
-                        address: '128 Pearl St (Financial District)',
-                        info: 'מסעדת גג יוקרתית עם נוף מדהים, קוקטיילים ברמה עולמית ובשרים מיושנים.',
-                        mapsQuery: 'Wall+Street+Grill+128+Pearl+St+New+York'
-                    },
-                    {
-                        name: 'Mocha Red',
-                        type: 'בשרי / לאונג\' בר',
-                        typeClass: 'type-meat',
-                        address: '127 4th Ave (Near Union Sq)',
-                        info: 'סטייקהאוס ובר קוקטיילים בעיצוב אומנותי מודרני ואווירת מסיבה.',
-                        mapsQuery: 'Mocha+Red+127+4th+Ave+New+York'
-                    }
-                ],
-                songsPool: [
-                    { title: 'Run This Town', artist: 'Jay-Z ft. Rihanna & Kanye West', genre: 'Night Empire 🌃' },
-                    { title: 'Rich Flex', artist: 'Drake & 21 Savage', genre: 'Luxury Night 💎' },
-                    { title: 'SICKO MODE', artist: 'Travis Scott', genre: 'Late Night Hype 🔥' },
-                    { title: 'Starboy', artist: 'The Weeknd ft. Daft Punk', genre: 'Luxury Synth 🍸' },
-                    { title: 'Heartless', artist: 'Kanye West', genre: 'Midnight Drive 🚗' },
-                    { title: 'Needed Me', artist: 'Rihanna', genre: 'Downtown Lounge 🌙' },
-                    { title: 'FE!N', artist: 'Travis Scott ft. Playboi Carti', genre: 'Club Energy ⚡' }
-                ]
+            {
+                name: 'Tiberias',
+                type: 'חלבי / ביסטרו איטלקי 24/7',
+                typeClass: 'type-dairy',
+                lat: 40.7547,
+                lng: -73.9785,
+                address: '35 E 45th St, New York, NY 10017',
+                info: 'ביסטרו איטלקי כשר ויוקרתי במידטאון. פסטות טריות, פיצות שף ודגים מעולים.',
+                vibe: 'times-square'
+            },
+
+            // SoHo / Downtown / Village Area
+            {
+                name: 'Breads Bakery (Union Square)',
+                type: 'מאפייה & קפה',
+                typeClass: 'type-bakery',
+                lat: 40.7369,
+                lng: -73.9922,
+                address: '18 E 16th St, New York, NY 10003',
+                info: 'בבקת השוקולד האגדית של ניו יורק, רוגלך חם, לחמי מחמצת וקפה בוטיק משובח.',
+                vibe: 'morning'
+            },
+            {
+                name: 'Mocha Burger Bistro',
+                type: 'בשרי / ביסטרו',
+                typeClass: 'type-meat',
+                lat: 40.7289,
+                lng: -73.9996,
+                address: '496 LaGuardia Pl, New York, NY 10012',
+                info: 'ביסטרו המבורגרים יוקרתי ומודרני ממש ליד סוהו, פארק וושינגטון סקוור והגריניץ\' וילג\'.',
+                vibe: 'morning'
+            },
+            {
+                name: 'The Hungarian Pastry Shop',
+                type: 'קפה & מאפים',
+                typeClass: 'type-bakery',
+                lat: 40.8030,
+                lng: -73.9620,
+                address: '1030 Amsterdam Ave, New York, NY 10025',
+                info: 'בית קפה וספרים מיתולוגי ורומנטי עם מאפים אירופאיים ואווירה ניו-יורקית קסומה.',
+                vibe: 'morning'
+            },
+
+            // Upper West Side & Central Park Area
+            {
+                name: 'Modern Bread and Bagel',
+                type: 'חלבי / בייגל פרימיום',
+                typeClass: 'type-dairy',
+                lat: 40.7846,
+                lng: -73.9740,
+                address: '472 Columbus Ave, New York, NY 10024',
+                info: 'הבייגל המבוקש ביותר בעיר (100% כשר ונטול גלוטן!). כריכי סלמון מעושן, גבינות וסלטים.',
+                vibe: 'museum'
+            },
+            {
+                name: 'Talia\'s Steakhouse',
+                type: 'בשרי / גריל',
+                typeClass: 'type-meat',
+                lat: 40.7923,
+                lng: -73.9723,
+                address: '668 Amsterdam Ave, New York, NY 10025',
+                info: 'סטייקהאוס כשר באווירה חמימה ליד סנטרל פארק עם מוזיקה חיה וישיבה בחוץ.',
+                vibe: 'museum'
+            },
+            {
+                name: 'Saba\'s Pizza',
+                type: 'חלבי / פיצרייה',
+                typeClass: 'type-dairy',
+                lat: 40.7834,
+                lng: -73.9764,
+                address: '403 Amsterdam Ave, New York, NY 10024',
+                info: 'פיצה כשרה איטלקית אותנטית באפר ווסט סייד, מושלמת לטייק-אווי לפיקניק בסנטרל פארק.',
+                vibe: 'museum'
+            },
+            {
+                name: 'Kasbah BBQ & Deli',
+                type: 'בשרי / ברביקיו',
+                typeClass: 'type-meat',
+                lat: 40.7885,
+                lng: -73.9771,
+                address: '251 W 85th St, New York, NY 10024',
+                info: 'סטייקהאוס וברביקיו כשר מעולה עם בשרים מעושנים וסושי באפר ווסט סייד.',
+                vibe: 'museum'
+            },
+
+            // Brooklyn (Downtown Brooklyn, Boerum Hill, Crown Heights, Williamsburg, DUMBO)
+            {
+                name: 'Brooklyn Kosher Grill (BKG)',
+                type: 'בשרי / גריל',
+                typeClass: 'type-meat',
+                lat: 40.6635,
+                lng: -73.9427,
+                address: '566 Empire Blvd, Brooklyn, NY 11225',
+                info: 'המבורגרים מושחתים, כנפיים קריספי, צ\'יקן סנדוויץ\' ורטבים מיוחדים בברוקלין.',
+                vibe: 'hipster'
+            },
+            {
+                name: 'Boeuf & Bun',
+                type: 'בשרי / גורמה בורגר',
+                typeClass: 'type-meat',
+                lat: 40.6698,
+                lng: -73.9425,
+                address: '271 Kingston Ave, Brooklyn, NY 11213',
+                info: 'בורגר בר היפסטרי מפורסם בברוקלין עם בשר אנגוס טרי, לחמניות בריוש ובירות בוטיק.',
+                vibe: 'hipster'
+            },
+            {
+                name: 'Izzy\'s Brooklyn Smokehouse',
+                type: 'בשרי / ברביקיו מעושן',
+                typeClass: 'type-meat',
+                lat: 40.6628,
+                lng: -73.9365,
+                address: '397 Troy Ave, Brooklyn, NY 11213',
+                info: 'מעשנת הבשרים הכשרה מס\' 1 בניו יורק (זוכת פרסים!). בריסקט וצלעות שנמסים בפה.',
+                vibe: 'hipster'
+            },
+            {
+                name: 'Basil Pizza & Wine Bar',
+                type: 'חלבי / גורמה איטלקי',
+                typeClass: 'type-dairy',
+                lat: 40.6699,
+                lng: -73.9428,
+                address: '270 Kingston Ave, Brooklyn, NY 11213',
+                info: 'מסעדת שף חלבית איטלקית יוקרתית עם טאבון אבנים, פיצות גורמה ויינות משובחים.',
+                vibe: 'hipster'
+            },
+            {
+                name: 'Essen NY Deli',
+                type: 'בשרי / דלי ברוקלינאי',
+                typeClass: 'type-meat',
+                lat: 40.6231,
+                lng: -73.9612,
+                address: '1359 Coney Island Ave, Brooklyn, NY 11230',
+                info: 'דלי יהודי ענק עם פסטרמות חמות, שניצלים, מרקים ותוספות מסורתיות.',
+                vibe: 'hipster'
+            },
+
+            // Financial District / Wall Street / Lower Manhattan
+            {
+                name: 'Reserve Cut',
+                type: 'בשרי / שף יוקרתי',
+                typeClass: 'type-meat',
+                lat: 40.7064,
+                lng: -74.0113,
+                address: '40 Broad St (The Setai), New York, NY 10004',
+                info: 'אחת ממסעדות הבשרים הכשרות המפוארות בעולם. בשר וואגיו פרימיום, סושי בר ועיצוב עילי.',
+                vibe: 'night'
+            },
+            {
+                name: 'Wall Street Grill',
+                type: 'בשרי / רופטופ יוקרתי',
+                typeClass: 'type-meat',
+                lat: 40.7048,
+                lng: -74.0094,
+                address: '128 Pearl St, New York, NY 10005',
+                info: 'מסעדת גג יוקרתית בלב וול סטריט עם נוף מדהים, קוקטיילים ברמה עולמית ובשרים מיושנים.',
+                vibe: 'night'
+            },
+            {
+                name: 'Mocha Red',
+                type: 'בשרי / לאונג\' בר',
+                typeClass: 'type-meat',
+                lat: 40.7329,
+                lng: -73.9902,
+                address: '127 4th Ave, New York, NY 10003',
+                info: 'סטייקהאוס ובר קוקטיילים בעיצוב אומנותי מודרני, מוזיקה מעולה ואווירת מסיבה.',
+                vibe: 'night'
             }
+        ];
+
+        // Specific Landmark / Street Geocoding Dictionary
+        const nycLandmarks = [
+            { keys: ['empire state', 'אמפייר סטייט', '350 5th ave', '34th st'], name: 'Empire State Building', lat: 40.7484, lng: -73.9857, vibe: 'times-square' },
+            { keys: ['times square', 'טיימס סקוור', '42nd st', 'broadway'], name: 'Times Square', lat: 40.7580, lng: -73.9855, vibe: 'times-square' },
+            { keys: ['rockefeller', 'רוקפלר', 'top of the rock'], name: 'Rockefeller Center', lat: 40.7587, lng: -73.9787, vibe: 'times-square' },
+            { keys: ['grand central', 'גרנד סנטרל'], name: 'Grand Central Terminal', lat: 40.7527, lng: -73.9772, vibe: 'times-square' },
+            { keys: ['madison square garden', 'msg', 'penn station'], name: 'Madison Square Garden / Penn Station', lat: 40.7505, lng: -73.9934, vibe: 'times-square' },
+            { keys: ['hoyt', '126 hoyt', 'boerum hill', 'atlantic ave', 'smith st'], name: '126 Hoyt St (Boerum Hill, Brooklyn)', lat: 40.6865, lng: -73.9902, vibe: 'hipster' },
+            { keys: ['dumbo', 'דמבו', 'washington st', 'brooklyn bridge park'], name: 'DUMBO, Brooklyn', lat: 40.7033, lng: -73.9882, vibe: 'hipster' },
+            { keys: ['williamsburg', 'ויליאמסבורג', 'bedford ave'], name: 'Williamsburg, Brooklyn', lat: 40.7081, lng: -73.9571, vibe: 'hipster' },
+            { keys: ['crown heights', 'קראון הייטס', 'kingston ave', '770'], name: 'Crown Heights, Brooklyn (770)', lat: 40.6694, lng: -73.9422, vibe: 'hipster' },
+            { keys: ['brooklyn bridge', 'גשר ברוקלין'], name: 'Brooklyn Bridge', lat: 40.7061, lng: -73.9969, vibe: 'hipster' },
+            { keys: ['soho', 'סוהו', 'prince st', 'spring st'], name: 'SoHo, Manhattan', lat: 40.7233, lng: -74.0030, vibe: 'morning' },
+            { keys: ['chelsea', 'צ\'לסי', 'high line', 'היי ליין'], name: 'Chelsea & The High Line', lat: 40.7465, lng: -74.0014, vibe: 'morning' },
+            { keys: ['greenwich', 'ווילג\'', 'washington square'], name: 'Washington Square Park & Village', lat: 40.7308, lng: -73.9973, vibe: 'morning' },
+            { keys: ['union square', 'יוניון סקוור'], name: 'Union Square', lat: 40.7359, lng: -73.9911, vibe: 'morning' },
+            { keys: ['central park', 'סנטרל פארק', 'bow bridge', 'columbus circle'], name: 'Central Park', lat: 40.7829, lng: -73.9654, vibe: 'museum' },
+            { keys: ['met museum', 'metropolitan', 'מוזיאון המטרופוליטן', 'museum of natural history'], name: 'The Met / Museum Mile', lat: 40.7794, lng: -73.9632, vibe: 'museum' },
+            { keys: ['upper west', 'אפר ווסט', 'amsterdam ave', 'columbus ave'], name: 'Upper West Side', lat: 40.7870, lng: -73.9754, vibe: 'museum' },
+            { keys: ['wall street', 'וול סטריט', 'financial district', 'fidi'], name: 'Wall Street (Financial District)', lat: 40.7075, lng: -74.0090, vibe: 'night' },
+            { keys: ['world trade center', 'wtc', '9/11', 'one world'], name: 'One World Trade Center', lat: 40.7127, lng: -74.0134, vibe: 'night' }
+        ];
+
+        // Song pools for each vibe
+        const vibesSongPools = {
+            'times-square': [
+                { title: 'Run This Town', artist: 'Jay-Z ft. Rihanna & Kanye West', genre: 'NYC Anthem 🗽' },
+                { title: 'Empire State of Mind', artist: 'Jay-Z ft. Alicia Keys', genre: 'NYC Classic 🏙️' },
+                { title: 'The Thrill', artist: 'Wiz Khalifa', genre: 'Midtown High Energy 🔥' },
+                { title: 'Whats Poppin', artist: 'Jack Harlow', genre: 'Midtown Flow 🎤' },
+                { title: 'First Person Shooter', artist: 'Drake ft. J. Cole', genre: 'Hype Hip-Hop 🚀' },
+                { title: 'American Boy', artist: 'Estelle ft. Kanye West', genre: 'NYC Groove ✨' },
+                { title: 'Stronger', artist: 'Kanye West', genre: 'Broadway Power ⚡' },
+                { title: 'Can\'t Tell Me Nothing', artist: 'Kanye West', genre: 'City Boss 🌃' }
+            ],
+            'morning': [
+                { title: 'Rehab', artist: 'Rihanna', genre: 'Morning Smooth R&B ☕' },
+                { title: 'Bad Habit', artist: 'Steve Lacy', genre: 'SoHo Indie Vibes 🕶️' },
+                { title: 'Dark Red', artist: 'Steve Lacy', genre: 'Chill Acoustic Flow 🎸' },
+                { title: 'American Boy', artist: 'Estelle ft. Kanye West', genre: 'SoHo Shopping 🛍️' },
+                { title: 'Snooze', artist: 'SZA', genre: 'Morning R&B ☕' },
+                { title: 'Houdini', artist: 'Dua Lipa', genre: 'SoHo Energy ✨' },
+                { title: 'Blinding Lights', artist: 'The Weeknd', genre: 'Urban Pop 🏙️' },
+                { title: 'Stay', artist: 'Rihanna ft. Mikky Ekko', genre: 'Coffee & Chill 🌧️' }
+            ],
+            'museum': [
+                { title: 'Call Me Maybe', artist: 'Carly Rae Jepsen', genre: 'Feel Good Park Pop 🌸' },
+                { title: 'Golden Hour', artist: 'JVKE', genre: 'Aesthetic Sunset 🌅' },
+                { title: 'Save Your Tears', artist: 'The Weeknd', genre: 'Park Chill 🌿' },
+                { title: 'vampire', artist: 'Olivia Rodrigo', genre: 'Alt Pop Drama 🎵' },
+                { title: 'Cruel Summer', artist: 'Taylor Swift', genre: 'Summer Breeze 🍃' },
+                { title: 'As It Was', artist: 'Harry Styles', genre: 'Central Park Walk 👟' },
+                { title: 'Diamonds', artist: 'Rihanna', genre: 'Museum Glow 💎' }
+            ],
+            'hipster': [
+                { title: 'The Thrill', artist: 'Wiz Khalifa', genre: 'DUMBO Nostalgia 🌉' },
+                { title: 'Sunflower', artist: 'Post Malone & Swae Lee', genre: 'Brooklyn Vibe 🌻' },
+                { title: 'American Boy', artist: 'Estelle ft. Kanye West', genre: 'Bridge Crossing 🗽' },
+                { title: 'Lovin On Me', artist: 'Jack Harlow', genre: 'Hip Hop Flow 👟' },
+                { title: 'Run This Town', artist: 'Jay-Z ft. Rihanna', genre: 'Brooklyn King 👑' },
+                { title: 'Bad Habit', artist: 'Steve Lacy', genre: 'Williamsburg Indie 🎨' },
+                { title: 'Black and Yellow', artist: 'Wiz Khalifa', genre: 'Classic Hip-Hop 🟨' },
+                { title: 'HUMBLE.', artist: 'Kendrick Lamar', genre: 'Street Beats 🔥' }
+            ],
+            'night': [
+                { title: 'Run This Town', artist: 'Jay-Z ft. Rihanna & Kanye West', genre: 'Night Empire 🌃' },
+                { title: 'Rich Flex', artist: 'Drake & 21 Savage', genre: 'Luxury Night 💎' },
+                { title: 'SICKO MODE', artist: 'Travis Scott', genre: 'Late Night Hype 🔥' },
+                { title: 'Starboy', artist: 'The Weeknd ft. Daft Punk', genre: 'Luxury Synth 🍸' },
+                { title: 'Heartless', artist: 'Kanye West', genre: 'Midnight Drive 🚗' },
+                { title: 'Needed Me', artist: 'Rihanna', genre: 'Downtown Lounge 🌙' },
+                { title: 'FE!N', artist: 'Travis Scott ft. Playboi Carti', genre: 'Club Energy ⚡' }
+            ]
         };
 
         // State for music player
@@ -877,6 +1077,18 @@
         const barPlayToggle = document.getElementById('bar-play-toggle');
         const barTitle = document.getElementById('bar-title');
         const barArtist = document.getElementById('bar-artist');
+
+        // Haversine Distance Formula (calculates miles between two lat/lng points)
+        function calculateDistance(lat1, lon1, lat2, lon2) {
+            const R = 3958.8; // Radius of the Earth in miles
+            const dLat = (lat2 - lat1) * Math.PI / 180;
+            const dLon = (lon2 - lon1) * Math.PI / 180;
+            const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                      Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+                      Math.sin(dLon / 2) * Math.sin(dLon / 2);
+            const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+            return R * c;
+        }
 
         // Helper: pick N random items from an array
         function getRandomSongs(pool, count = 4) {
@@ -890,7 +1102,7 @@
             document.body.style.backgroundImage = `linear-gradient(rgba(10, 12, 18, 0.82), rgba(10, 12, 18, 0.88)), url('${bgUrl}')`;
         }
 
-        // Select a vibe and render UI
+        // Select a vibe preset
         function selectVibe(vibeKey) {
             currentVibeKey = vibeKey;
 
@@ -899,38 +1111,200 @@
             const activeBtn = document.getElementById(`btn-${vibeKey}`);
             if (activeBtn) activeBtn.classList.add('active');
 
-            // Switch Background Image!
             updateBackground(vibeKey);
 
-            const data = vibesData[vibeKey] || vibesData['times-square'];
+            document.getElementById('search-badge-container').innerHTML = '';
 
-            // Update Titles
-            document.getElementById('vibe-title').innerText = data.title;
-            document.getElementById('vibe-description').innerText = data.desc;
+            const vibeTitles = {
+                'times-square': { title: '🗽 טיימס סקוור & מידטאון', desc: 'הלב הפועם של מנהטן! אורות הניאון, מחזות הזמר של ברודווי, והמקומות הכשרים הכי מוכרים וטעימים בעיר.' },
+                'morning': { title: '☕ בוקר בסוהו וצ\'לסי', desc: 'התחילו את היום בסטייל: מאפיות בוטיק כשרות, הליכה לאורך פארק המסילה (High Line) ושופינג ברחובות סוהו.' },
+                'museum': { title: '🎨 סנטרל פארק & מוזיאונים', desc: 'וייב רגוע ותרבותי: שיטוט בשבילי סנטרל פארק, ביקור במוזיאון המטרופוליטן או הטבע, ובייגל חם באפר ווסט סייד.' },
+                'hipster': { title: '📸 ברוקלין, DUMBO & וינטג\'', desc: 'תצפית מהפנטת על הגשרים מ-DUMBO, חנויות וינטג\' בויליאמסבורג, והמעצמה הכשרה של קראון הייטס.' },
+                'night': { title: '🍸 ערב יוקרתי בוול סטריט', desc: 'חווית לילה מנהטנית: גורד שחקים מוארים, מסעדות שף כשרות מהטופ העולמי, ומשקאות ברמה גבוהה.' }
+            };
 
-            // Render Places with Google Maps Buttons
+            const info = vibeTitles[vibeKey] || vibeTitles['times-square'];
+            document.getElementById('vibe-title').innerText = info.title;
+            document.getElementById('vibe-description').innerText = info.desc;
+            document.getElementById('places-heading-text').innerText = '🍽️ מקומות כשרים מומלצים באזור';
+
+            // Filter places matching this vibe
+            const matchingPlaces = allKosherPlaces.filter(p => p.vibe === vibeKey);
+            renderPlaces(matchingPlaces);
+
+            // Update Explore box
+            updateExploreBox(info.title.replace(/[^\w\s\u0590-\u05FF]/gi, ''));
+
+            // Render playlist
+            renderPlaylist(vibesSongPools[vibeKey]);
+        }
+
+        // Render Place cards (with distances and direct routing links)
+        function renderPlaces(places, originQuery = '') {
             const placesContainer = document.getElementById('places-grid');
-            placesContainer.innerHTML = data.places.map(place => `
-                <div class="place-card">
-                    <div>
-                        <div class="place-top">
-                            <span class="place-name">${place.name}</span>
-                            <span class="place-type ${place.typeClass}">${place.type}</span>
-                        </div>
-                        <div class="place-address">📍 ${place.address}</div>
-                        <div class="place-info">${place.info}</div>
-                    </div>
-                    <a href="https://www.google.com/maps/search/?api=1&query=${place.mapsQuery}" 
-                       target="_blank" 
-                       rel="noopener noreferrer" 
-                       class="maps-btn">
-                        <span>🗺️</span> פתח מיקום ב-Google Maps
-                    </a>
-                </div>
-            `).join('');
+            
+            placesContainer.innerHTML = places.map(place => {
+                const mapsUrl = originQuery
+                    ? `https://www.google.com/maps/dir/?api=1&origin=${encodeURIComponent(originQuery)}&destination=${encodeURIComponent(place.address)}`
+                    : `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(place.name + ' ' + place.address)}`;
 
-            // Render fresh playlist from pool
-            renderPlaylist(data.songsPool);
+                const btnText = originQuery ? `🚶‍♂️ נווט מכאן ב-Google Maps` : `🗺️ פתח מיקום ב-Google Maps`;
+
+                const distanceHtml = place.distance !== undefined 
+                    ? `<div class="distance-badge">📍 כ-${place.distance.toFixed(1)} מייל ממך (${Math.max(1, Math.round(place.distance * 18))} דק' הליכה)</div>` 
+                    : '';
+
+                return `
+                    <div class="place-card">
+                        <div>
+                            <div class="place-top">
+                                <span class="place-name">${place.name}</span>
+                                <span class="place-type ${place.typeClass}">${place.type}</span>
+                            </div>
+                            ${distanceHtml}
+                            <div class="place-address">📍 ${place.address}</div>
+                            <div class="place-info">${place.info}</div>
+                        </div>
+                        <a href="${mapsUrl}" 
+                           target="_blank" 
+                           rel="noopener noreferrer" 
+                           class="maps-btn">
+                            ${btnText}
+                        </a>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Update the Google Maps Explore section for any query
+        function updateExploreBox(searchQuery) {
+            const exploreBtn = document.getElementById('explore-btn');
+            const exploreDesc = document.getElementById('explore-desc');
+            const cleanQuery = searchQuery.trim();
+
+            exploreDesc.innerText = `חיפוש חי ב-Google Maps עבור כל המקומות הכשרים סביב "${cleanQuery}".`;
+            exploreBtn.href = `https://www.google.com/maps/search/kosher+restaurant+near+${encodeURIComponent(cleanQuery + ' New York')}`;
+        }
+
+        // Intelligent Location & Address Search
+        function searchByLocation(customInput = null) {
+            const input = (customInput || document.getElementById('user-location').value).trim();
+            if (!input) {
+                alert("אנא הזן שם מקום, בניין, רחוב או כתובת בניו יורק (למשל: Empire State Building, 126 Hoyt St, SoHo)");
+                return;
+            }
+
+            const lowerInput = input.toLowerCase();
+
+            // 1. Try to find match in landmark dictionary
+            let matchedLandmark = nycLandmarks.find(lm => 
+                lm.keys.some(k => lowerInput.includes(k.toLowerCase()))
+            );
+
+            let targetLat = 40.7580; // Default Times Square
+            let targetLng = -73.9855;
+            let displayLocationName = input;
+            let targetVibe = 'times-square';
+
+            if (matchedLandmark) {
+                targetLat = matchedLandmark.lat;
+                targetLng = matchedLandmark.lng;
+                displayLocationName = matchedLandmark.name;
+                targetVibe = matchedLandmark.vibe;
+            } else {
+                // Heuristic for Brooklyn / Queens / Manhattan addresses
+                if (lowerInput.includes('brooklyn') || lowerInput.includes('ברוקלין') || lowerInput.includes('st') || lowerInput.includes('ave')) {
+                    targetLat = 40.6865;
+                    targetLng = -73.9902;
+                    targetVibe = 'hipster';
+                }
+            }
+
+            // Calculate distance to all kosher places & sort by closest
+            const placesWithDistance = allKosherPlaces.map(place => {
+                const dist = calculateDistance(targetLat, targetLng, place.lat, place.lng);
+                return { ...place, distance: dist };
+            }).sort((a, b) => a.distance - b.distance);
+
+            // Determine best vibe from the closest restaurant if landmark wasn't explicit
+            if (placesWithDistance.length > 0) {
+                targetVibe = placesWithDistance[0].vibe;
+            }
+
+            currentVibeKey = targetVibe;
+            updateBackground(targetVibe);
+
+            // Highlight corresponding vibe button
+            document.querySelectorAll('.vibe-btn').forEach(btn => btn.classList.remove('active'));
+            const activeBtn = document.getElementById(`btn-${targetVibe}`);
+            if (activeBtn) activeBtn.classList.add('active');
+
+            // Update UI Header for the exact search
+            document.getElementById('vibe-title').innerText = `🎯 מקומות כשרים קרובים ל-${displayLocationName}`;
+            document.getElementById('vibe-description').innerText = `מציג את המסעדות והמאפיות הכשרות הקרובות ביותר למיקומך ב-Google Maps עם זמני הליכה וניווט מדויק.`;
+            document.getElementById('search-badge-container').innerHTML = `
+                <span class="search-badge-info">📍 נמצאו ${placesWithDistance.length} מקומות כשרים ממוינים לפי קרבה מדויקת</span>
+            `;
+            document.getElementById('places-heading-text').innerText = `🍽️ המקומות הכשרים הכי קרובים ל-${displayLocationName}:`;
+
+            // Render top closest places
+            renderPlaces(placesWithDistance.slice(0, 6), `${displayLocationName}, New York, NY`);
+
+            // Update live Google Maps explore box
+            updateExploreBox(displayLocationName);
+
+            // Render fresh playlist for this area
+            renderPlaylist(vibesSongPools[targetVibe]);
+        }
+
+        // GPS Geolocation Handler
+        function useCurrentGPS() {
+            if (!navigator.geolocation) {
+                alert("הדפדפן שלך אינו תומך באיכון GPS.");
+                return;
+            }
+
+            const gpsBtn = document.querySelector('.gps-btn');
+            gpsBtn.innerText = '⏳ מאתר מיקום מדויק...';
+
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    gpsBtn.innerText = '📍 השתמש במיקום הנוכחי שלי (GPS)';
+                    const lat = position.coords.latitude;
+                    const lng = position.coords.longitude;
+
+                    // Sort by distance to user's GPS
+                    const placesWithDistance = allKosherPlaces.map(place => {
+                        const dist = calculateDistance(lat, lng, place.lat, place.lng);
+                        return { ...place, distance: dist };
+                    }).sort((a, b) => a.distance - b.distance);
+
+                    const closest = placesWithDistance[0];
+                    currentVibeKey = closest.vibe;
+                    updateBackground(closest.vibe);
+
+                    document.getElementById('vibe-title').innerText = `📍 מקומות כשרים סביב המיקום הנוכחי שלך`;
+                    document.getElementById('vibe-description').innerText = `מציג את האפשרויות הכשרות הקרובות ביותר לפי ה-GPS שלך בניו יורק.`;
+                    document.getElementById('search-badge-container').innerHTML = `
+                        <span class="search-badge-info">📡 מיקום GPS אומת בהצלחה (קו רוחב: ${lat.toFixed(3)}, קו אורך: ${lng.toFixed(3)})</span>
+                    `;
+
+                    renderPlaces(placesWithDistance.slice(0, 6), `${lat},${lng}`);
+                    updateExploreBox('Current Location');
+                    renderPlaylist(vibesSongPools[closest.vibe]);
+                },
+                (error) => {
+                    gpsBtn.innerText = '📍 השתמש במיקום הנוכחי שלי (GPS)';
+                    alert("לא ניתן היה לקבל את המיקום. אנא ודא שהרשאת המיקום מאושרת בדפדפן או הקלד כתובת ידנית בתיבת החיפוש.");
+                },
+                { timeout: 10000 }
+            );
+        }
+
+        function handleKeyPress(e) {
+            if (e.key === 'Enter') {
+                searchByLocation();
+            }
         }
 
         // Render songs list
@@ -970,39 +1344,8 @@
 
         // Refresh/Shuffle button click handler
         function refreshCurrentVibePlaylist() {
-            const data = vibesData[currentVibeKey] || vibesData['times-square'];
-            renderPlaylist(data.songsPool);
-        }
-
-        // Search handler
-        function searchByLocation() {
-            const input = document.getElementById('user-location').value.trim().toLowerCase();
-            if (!input) {
-                alert("אנא הזן מקום או שכונה (למשל: Times Square, DUMBO, SoHo, Brooklyn, Central Park)");
-                return;
-            }
-
-            if (input.includes("time") || input.includes("טיימס") || input.includes("midtown") || input.includes("מידטאון") || input.includes("broadway")) {
-                selectVibe('times-square');
-            } else if (input.includes("soho") || input.includes("סוהו") || input.includes("chelsea") || input.includes("צ'לסי") || input.includes("union") || input.includes("בוקר")) {
-                selectVibe('morning');
-            } else if (input.includes("park") || input.includes("פארק") || input.includes("central") || input.includes("museum") || input.includes("מוזיאון") || input.includes("upper")) {
-                selectVibe('museum');
-            } else if (input.includes("brooklyn") || input.includes("ברוקלין") || input.includes("dumbo") || input.includes("crown") || input.includes("דמבו") || input.includes("ויליאמסבורג")) {
-                selectVibe('hipster');
-            } else if (input.includes("wall") || input.includes("night") || input.includes("לילה") || input.includes("ערב") || input.includes("וול סטריט") || input.includes("bar")) {
-                selectVibe('night');
-            } else {
-                // Default fallback to Times square with notification
-                selectVibe('times-square');
-                document.getElementById('vibe-title').innerText = `🗽 תוצאות חיפוש עבור "${input}"`;
-            }
-        }
-
-        function handleKeyPress(e) {
-            if (e.key === 'Enter') {
-                searchByLocation();
-            }
+            const pool = vibesSongPools[currentVibeKey] || vibesSongPools['times-square'];
+            renderPlaylist(pool);
         }
 
         // Live Audio Player using iTunes Search 30s Audio Preview API (Instant, Free & CORS enabled)
@@ -1044,7 +1387,6 @@
 
                     updatePlayUI(true);
                 } else {
-                    // Fallback if iTunes preview unavailable
                     alert(`לא נמצאה תצוגה מקדימה לשיר "${title}". נסה ללחוץ על קישור ה-Spotify!`);
                     if (btn) btn.innerText = '▶';
                 }
@@ -1056,7 +1398,6 @@
         }
 
         function updatePlayUI(isPlaying) {
-            // Reset all cards
             document.querySelectorAll('.play-btn-circle').forEach(b => {
                 b.innerText = '▶';
                 b.classList.remove('playing');
