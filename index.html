@@ -14,8 +14,8 @@
             --accent: #1fe064;
             --accent-glow: rgba(31, 224, 100, 0.35);
             --bg-dark: #0f1117;
-            --card-bg: rgba(26, 29, 38, 0.85);
-            --card-border: rgba(255, 255, 255, 0.1);
+            --card-bg: rgba(20, 23, 32, 0.88);
+            --card-border: rgba(255, 255, 255, 0.12);
             --text-main: #ffffff;
             --text-muted: #a0a6b5;
         }
@@ -28,14 +28,16 @@
         }
 
         body {
-            background: linear-gradient(rgba(10, 12, 18, 0.82), rgba(10, 12, 18, 0.88)), 
-                        url('https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?q=80&w=1920&auto=format&fit=crop');
+            background-color: #0c0e15;
+            background-image: linear-gradient(rgba(10, 12, 18, 0.82), rgba(10, 12, 18, 0.88)), 
+                              url('https://images.unsplash.com/photo-1534430480872-3498386e7856?q=80&w=1920&auto=format&fit=crop');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
             color: var(--text-main);
             min-height: 100vh;
-            padding: 25px 15px 100px;
+            padding: 25px 15px 110px;
+            transition: background-image 0.8s ease-in-out;
         }
 
         .main-wrapper {
@@ -103,7 +105,7 @@
             border: 1px solid var(--card-border);
             padding: 16px;
             border-radius: 18px;
-            backdrop-filter: blur(12px);
+            backdrop-filter: blur(14px);
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
             display: flex;
             gap: 10px;
@@ -173,7 +175,7 @@
         }
 
         .vibe-btn {
-            background: rgba(30, 35, 48, 0.8);
+            background: rgba(30, 35, 48, 0.85);
             color: #fff;
             border: 1px solid rgba(255, 255, 255, 0.08);
             padding: 10px 18px;
@@ -208,7 +210,7 @@
             border: 1px solid var(--card-border);
             padding: 30px;
             border-radius: 24px;
-            backdrop-filter: blur(14px);
+            backdrop-filter: blur(16px);
             box-shadow: 0 15px 40px rgba(0,0,0,0.6);
             margin-bottom: 30px;
         }
@@ -250,8 +252,8 @@
         }
 
         .place-card {
-            background: rgba(18, 21, 30, 0.9);
-            border: 1px solid rgba(255, 255, 255, 0.07);
+            background: rgba(15, 18, 26, 0.92);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 16px;
             padding: 18px;
             display: flex;
@@ -353,6 +355,8 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 18px;
+            flex-wrap: wrap;
+            gap: 10px;
         }
 
         .music-title {
@@ -363,6 +367,37 @@
             gap: 10px;
         }
 
+        .shuffle-btn {
+            background: rgba(255, 255, 255, 0.08);
+            color: var(--accent);
+            border: 1px solid rgba(31, 224, 100, 0.3);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.25s ease;
+        }
+
+        .shuffle-btn:hover {
+            background: rgba(31, 224, 100, 0.15);
+            border-color: var(--accent);
+            box-shadow: 0 0 15px var(--accent-glow);
+            transform: scale(1.05);
+        }
+
+        .shuffle-btn .icon-spin {
+            display: inline-block;
+            transition: transform 0.4s ease;
+        }
+
+        .shuffle-btn:active .icon-spin {
+            transform: rotate(360deg);
+        }
+
         .song-list {
             display: flex;
             flex-direction: column;
@@ -370,7 +405,7 @@
         }
 
         .song-card {
-            background: rgba(18, 21, 30, 0.9);
+            background: rgba(15, 18, 26, 0.92);
             border: 1px solid rgba(255, 255, 255, 0.06);
             border-radius: 14px;
             padding: 12px 18px;
@@ -378,10 +413,11 @@
             align-items: center;
             justify-content: space-between;
             transition: 0.25s ease;
+            animation: fadeIn 0.4s ease-out;
         }
 
         .song-card:hover {
-            background: rgba(28, 32, 45, 0.9);
+            background: rgba(25, 29, 42, 0.95);
             border-color: rgba(31, 224, 100, 0.4);
         }
 
@@ -525,6 +561,11 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         @media (max-width: 600px) {
             .logo-title { font-size: 2.4rem; }
             .search-container { flex-direction: column; }
@@ -552,7 +593,7 @@
         <!-- Search Box -->
         <div class="search-container">
             <input type="text" id="user-location" class="search-input" 
-                   placeholder="איפה אתה נמצא? (למשל: Times Square, SoHo, Brooklyn, Central Park...)" 
+                   placeholder="איפה אתה נמצא? (למשל: Times Square, DUMBO, SoHo, Brooklyn, Central Park...)" 
                    onkeypress="handleKeyPress(event)">
             <button class="search-btn" onclick="searchByLocation()">
                 <span>🔍</span> מצא לי וייב
@@ -586,12 +627,15 @@
                 <!-- Injected via JS -->
             </div>
 
-            <!-- Music Section with Audio Play button -->
+            <!-- Music Section with Audio Play button and Refresh -->
             <div class="music-section">
                 <div class="music-header">
                     <div class="music-title">
                         <span>🎵</span> הפלייליסט המושלם לוייב הזה
                     </div>
+                    <button class="shuffle-btn" onclick="refreshCurrentVibePlaylist()">
+                        <span class="icon-spin">🔀</span> שירים חדשים / רענן פלייליסט
+                    </button>
                 </div>
                 <div class="song-list" id="song-list">
                     <!-- Injected via JS -->
@@ -614,7 +658,16 @@
     <audio id="global-audio" preload="auto"></audio>
 
     <script>
-        // Database of Vibes, Kosher Places with exact Google Maps URLs, and Songs
+        // Background images for each vibe
+        const vibeBackgrounds = {
+            'times-square': 'https://images.unsplash.com/photo-1534430480872-3498386e7856?q=80&w=1920&auto=format&fit=crop', // Times Square Neon Night
+            'morning': 'https://images.unsplash.com/photo-1538688525198-9b88f6f53126?q=80&w=1920&auto=format&fit=crop',      // SoHo streets & Cobblestones
+            'museum': 'https://images.unsplash.com/photo-1518780664697-55e3ad937233?q=80&w=1920&auto=format&fit=crop',       // Central Park & Gapstow Bridge
+            'hipster': 'https://images.unsplash.com/photo-1541336032412-2048a678540d?q=80&w=1920&auto=format&fit=crop',      // Iconic DUMBO Washington St Bridge view
+            'night': 'https://images.unsplash.com/photo-1485871981521-5b1fd3805eee?q=80&w=1920&auto=format&fit=crop'         // Wall St & Lower Manhattan Night Skyline
+        };
+
+        // Database of Vibes, Kosher Places with Google Maps, and Rich Pools of Songs
         const vibesData = {
             'times-square': {
                 title: '🗽 טיימס סקוור & מידטאון',
@@ -645,10 +698,15 @@
                         mapsQuery: 'Taam+Tov+41+W+47th+St+New+York'
                     }
                 ],
-                songs: [
-                    { title: 'Empire State of Mind', artist: 'Jay-Z ft. Alicia Keys', genre: 'NYC Classic 🗽' },
-                    { title: 'Whats Poppin', artist: 'Jack Harlow', genre: 'Midtown Energy 🔥' },
-                    { title: 'First Person Shooter', artist: 'Drake ft. J. Cole', genre: 'Hype Hip-Hop 🎤' }
+                songsPool: [
+                    { title: 'Run This Town', artist: 'Jay-Z ft. Rihanna & Kanye West', genre: 'NYC Anthem 🗽' },
+                    { title: 'Empire State of Mind', artist: 'Jay-Z ft. Alicia Keys', genre: 'NYC Classic 🏙️' },
+                    { title: 'The Thrill', artist: 'Wiz Khalifa', genre: 'Midtown High Energy 🔥' },
+                    { title: 'Whats Poppin', artist: 'Jack Harlow', genre: 'Midtown Flow 🎤' },
+                    { title: 'First Person Shooter', artist: 'Drake ft. J. Cole', genre: 'Hype Hip-Hop 🚀' },
+                    { title: 'American Boy', artist: 'Estelle ft. Kanye West', genre: 'NYC Groove ✨' },
+                    { title: 'Stronger', artist: 'Kanye West', genre: 'Broadway Power ⚡' },
+                    { title: 'Can\'t Tell Me Nothing', artist: 'Kanye West', genre: 'City Boss 🌃' }
                 ]
             },
             'morning': {
@@ -680,10 +738,15 @@
                         mapsQuery: 'Mocha+Burger+Bistro+496+LaGuardia+Pl+New+York'
                     }
                 ],
-                songs: [
+                songsPool: [
+                    { title: 'Rehab', artist: 'Rihanna', genre: 'Morning Smooth R&B ☕' },
+                    { title: 'Bad Habit', artist: 'Steve Lacy', genre: 'SoHo Indie Vibes 🕶️' },
+                    { title: 'Dark Red', artist: 'Steve Lacy', genre: 'Chill Acoustic Flow 🎸' },
+                    { title: 'American Boy', artist: 'Estelle ft. Kanye West', genre: 'SoHo Shopping 🛍️' },
                     { title: 'Snooze', artist: 'SZA', genre: 'Morning R&B ☕' },
+                    { title: 'Houdini', artist: 'Dua Lipa', genre: 'SoHo Energy ✨' },
                     { title: 'Blinding Lights', artist: 'The Weeknd', genre: 'Urban Pop 🏙️' },
-                    { title: 'Houdini', artist: 'Dua Lipa', genre: 'SoHo Vibes ✨' }
+                    { title: 'Stay', artist: 'Rihanna ft. Mikky Ekko', genre: 'Coffee & Chill 🌧️' }
                 ]
             },
             'museum': {
@@ -715,10 +778,14 @@
                         mapsQuery: 'Sabas+Pizza+403+Amsterdam+Ave+New+York'
                     }
                 ],
-                songs: [
+                songsPool: [
+                    { title: 'Call Me Maybe', artist: 'Carly Rae Jepsen', genre: 'Feel Good Park Pop 🌸' },
+                    { title: 'Golden Hour', artist: 'JVKE', genre: 'Aesthetic Sunset 🌅' },
                     { title: 'Save Your Tears', artist: 'The Weeknd', genre: 'Park Chill 🌿' },
-                    { title: 'vampire', artist: 'Olivia Rodrigo', genre: 'Alt Pop 🎵' },
-                    { title: 'Golden Hour', artist: 'JVKE', genre: 'Aesthetic Sunset 🌅' }
+                    { title: 'vampire', artist: 'Olivia Rodrigo', genre: 'Alt Pop Drama 🎵' },
+                    { title: 'Cruel Summer', artist: 'Taylor Swift', genre: 'Summer Breeze 🍃' },
+                    { title: 'As It Was', artist: 'Harry Styles', genre: 'Central Park Walk 👟' },
+                    { title: 'Diamonds', artist: 'Rihanna', genre: 'Museum Glow 💎' }
                 ]
             },
             'hipster': {
@@ -750,10 +817,15 @@
                         mapsQuery: 'Izzys+Brooklyn+Smokehouse+397+Troy+Ave+Brooklyn'
                     }
                 ],
-                songs: [
+                songsPool: [
+                    { title: 'The Thrill', artist: 'Wiz Khalifa', genre: 'DUMBO Nostalgia 🌉' },
                     { title: 'Sunflower', artist: 'Post Malone & Swae Lee', genre: 'Brooklyn Vibe 🌻' },
+                    { title: 'American Boy', artist: 'Estelle ft. Kanye West', genre: 'Bridge Crossing 🗽' },
                     { title: 'Lovin On Me', artist: 'Jack Harlow', genre: 'Hip Hop Flow 👟' },
-                    { title: 'Cruel Summer', artist: 'Taylor Swift', genre: 'Indie Pop 🌉' }
+                    { title: 'Run This Town', artist: 'Jay-Z ft. Rihanna', genre: 'Brooklyn King 👑' },
+                    { title: 'Bad Habit', artist: 'Steve Lacy', genre: 'Williamsburg Indie 🎨' },
+                    { title: 'Black and Yellow', artist: 'Wiz Khalifa', genre: 'Classic Hip-Hop 🟨' },
+                    { title: 'HUMBLE.', artist: 'Kendrick Lamar', genre: 'Street Beats 🔥' }
                 ]
             },
             'night': {
@@ -785,15 +857,20 @@
                         mapsQuery: 'Mocha+Red+127+4th+Ave+New+York'
                     }
                 ],
-                songs: [
-                    { title: 'Rich Flex', artist: 'Drake & 21 Savage', genre: 'Night Life 🌃' },
+                songsPool: [
+                    { title: 'Run This Town', artist: 'Jay-Z ft. Rihanna & Kanye West', genre: 'Night Empire 🌃' },
+                    { title: 'Rich Flex', artist: 'Drake & 21 Savage', genre: 'Luxury Night 💎' },
                     { title: 'SICKO MODE', artist: 'Travis Scott', genre: 'Late Night Hype 🔥' },
-                    { title: 'Starboy', artist: 'The Weeknd ft. Daft Punk', genre: 'Luxury Synth 🍸' }
+                    { title: 'Starboy', artist: 'The Weeknd ft. Daft Punk', genre: 'Luxury Synth 🍸' },
+                    { title: 'Heartless', artist: 'Kanye West', genre: 'Midnight Drive 🚗' },
+                    { title: 'Needed Me', artist: 'Rihanna', genre: 'Downtown Lounge 🌙' },
+                    { title: 'FE!N', artist: 'Travis Scott ft. Playboi Carti', genre: 'Club Energy ⚡' }
                 ]
             }
         };
 
         // State for music player
+        let currentVibeKey = 'times-square';
         let currentPlayingSong = null;
         const audioElement = document.getElementById('global-audio');
         const audioBar = document.getElementById('audio-bar');
@@ -801,12 +878,29 @@
         const barTitle = document.getElementById('bar-title');
         const barArtist = document.getElementById('bar-artist');
 
+        // Helper: pick N random items from an array
+        function getRandomSongs(pool, count = 4) {
+            const shuffled = [...pool].sort(() => 0.5 - Math.random());
+            return shuffled.slice(0, count);
+        }
+
+        // Update body background smoothly based on vibe
+        function updateBackground(vibeKey) {
+            const bgUrl = vibeBackgrounds[vibeKey] || vibeBackgrounds['times-square'];
+            document.body.style.backgroundImage = `linear-gradient(rgba(10, 12, 18, 0.82), rgba(10, 12, 18, 0.88)), url('${bgUrl}')`;
+        }
+
         // Select a vibe and render UI
         function selectVibe(vibeKey) {
+            currentVibeKey = vibeKey;
+
             // Update buttons active state
             document.querySelectorAll('.vibe-btn').forEach(btn => btn.classList.remove('active'));
             const activeBtn = document.getElementById(`btn-${vibeKey}`);
             if (activeBtn) activeBtn.classList.add('active');
+
+            // Switch Background Image!
+            updateBackground(vibeKey);
 
             const data = vibesData[vibeKey] || vibesData['times-square'];
 
@@ -835,10 +929,17 @@
                 </div>
             `).join('');
 
-            // Render Songs with Play Button & Spotify Link
+            // Render fresh playlist from pool
+            renderPlaylist(data.songsPool);
+        }
+
+        // Render songs list
+        function renderPlaylist(songsPool) {
+            const selectedSongs = getRandomSongs(songsPool, 4);
             const songContainer = document.getElementById('song-list');
-            songContainer.innerHTML = data.songs.map((song, idx) => {
-                const songId = `song-${vibeKey}-${idx}`;
+            
+            songContainer.innerHTML = selectedSongs.map((song, idx) => {
+                const songId = `song-${currentVibeKey}-${idx}`;
                 const spotifySearch = encodeURIComponent(`${song.title} ${song.artist}`);
                 return `
                     <div class="song-card" id="card-${songId}">
@@ -867,11 +968,17 @@
             }).join('');
         }
 
+        // Refresh/Shuffle button click handler
+        function refreshCurrentVibePlaylist() {
+            const data = vibesData[currentVibeKey] || vibesData['times-square'];
+            renderPlaylist(data.songsPool);
+        }
+
         // Search handler
         function searchByLocation() {
             const input = document.getElementById('user-location').value.trim().toLowerCase();
             if (!input) {
-                alert("אנא הזן מקום או שכונה (למשל: Times Square, SoHo, Brooklyn, Central Park)");
+                alert("אנא הזן מקום או שכונה (למשל: Times Square, DUMBO, SoHo, Brooklyn, Central Park)");
                 return;
             }
 
